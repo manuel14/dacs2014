@@ -18,11 +18,16 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 public class ClienteFacade extends AbstractFacade<Cliente>{
-     @PersistenceContext(unitName = "dacs")
+    @PersistenceContext(unitName = "dacs")
     private EntityManager em;
      
       public ClienteFacade() {
         super(Cliente.class);
+    }
+      
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
     
 }
