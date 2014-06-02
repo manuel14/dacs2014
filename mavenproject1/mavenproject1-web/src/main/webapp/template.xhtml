@@ -7,12 +7,14 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Start Page</title>
+        <title>FantasticTour</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </h:head>
     
     <h:body>
-        <h:form> 
+        <div id="top" >
+            <ui:insert name="top" >
+                 <h:form> 
             <p:panel header="validate">
                 <h:panelGrid columns="4" cellpadding="5">
                     
@@ -27,5 +29,13 @@
                 
            
         </h:form>
+            
+            
+            </ui:insert>
+       
+        
+        </div>
+        
+       
     </h:body>
 </html>

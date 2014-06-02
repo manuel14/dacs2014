@@ -29,4 +29,6 @@ public class AdministradorFacade extends AbstractFacade<Administrador> {
     public AdministradorFacade(){
         super(Administrador.class);
     }
+    
+    
 }
