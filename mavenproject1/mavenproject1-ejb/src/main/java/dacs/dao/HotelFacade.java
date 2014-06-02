@@ -6,14 +6,24 @@
 
 package dacs.dao;
 
-import dacs.model.Hotel;
-import javax.ejb.Stateless;
+import dacs.models.Hotel;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Administrator
  */
-@Stateless
 public class HotelFacade extends AbstractFacade<Hotel> {
-    
+     @PersistenceContext(unitName = "dacs")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+    public HotelFacade(){
+        super(Hotel.class);
+        
+    }
 }

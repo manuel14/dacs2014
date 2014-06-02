@@ -6,14 +6,25 @@
 
 package dacs.dao;
 
-import dacs.model.Evento;
-import javax.ejb.Stateless;
+import dacs.models.Evento;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Administrator
  */
-@Stateless
 public class EventoFacade extends AbstractFacade<Evento> {
+     @PersistenceContext(unitName = "dacs")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
     
+    public EventoFacade(){
+        super(Evento.class);
+       
+    }
 }

@@ -6,7 +6,7 @@
 
 package dacs.dao;
 
-import dacs.models.Paquete;
+import dacs.models.FormadePagoReserva;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,15 +14,15 @@ import javax.persistence.PersistenceContext;
  *
  * @author Administrator
  */
-public class PaqueteFacade extends AbstractFacade<Paquete> {
-     @PersistenceContext(unitName = "dacs")
+public class FormadePagoReservaFacade extends AbstractFacade<FormadePagoReserva> {
+      @PersistenceContext(unitName = "dacs")
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    public PaqueteFacade(){
-        super(Paquete.class);
+    FormadePagoReservaFacade(){
+        super(FormadePagoReserva.class);
     }
 }
