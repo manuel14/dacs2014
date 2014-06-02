@@ -7,6 +7,7 @@
 package dacs.dao;
 
 import dacs.models.Transporte;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,6 +15,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Administrator
  */
+@Stateless 
 public class TransporteFacade extends AbstractFacade<Transporte> {
      @PersistenceContext(unitName = "dacs")
     private EntityManager em;

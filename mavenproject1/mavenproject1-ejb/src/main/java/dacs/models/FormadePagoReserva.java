@@ -44,7 +44,7 @@ public class FormadePagoReserva implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "tipoPago")
     private String tipoPago;
-    @Size(max = 20)
+    @Size(max = 120)
     @Column(name = "descripcion")
     private String descripcion;
     @JoinColumn(name = "idReservaPaquete", referencedColumnName = "idReservaPaquete")

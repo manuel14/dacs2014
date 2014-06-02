@@ -14,6 +14,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -66,14 +68,17 @@ public class Paquete implements Serializable {
     @NotNull
     @Column(name = "Precio")
     private float precio;
+    @JoinColumn(name = "idTransporte", referencedColumnName = "idTransporte")
+    @ManyToOne(optional = false)
+    private Transporte idTransporte;
+    @JoinColumn(name = "idHotel", referencedColumnName = "idHotel")
+    @ManyToOne(optional = false)
+    private Hotel idHotel;
+    @JoinColumn(name = "idEvento", referencedColumnName = "idEvento")
+    @ManyToOne(optional = false)
+    private Evento idEvento;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaquete")
     private Collection<ReservaPaquete> reservaPaqueteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaquete")
-    private Collection<Evento> eventoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaquete")
-    private Collection<Transporte> transporteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaquete")
-    private Collection<Hotel> hotelCollection;
 
     public Paquete() {
     }
@@ -137,6 +142,30 @@ public class Paquete implements Serializable {
         this.precio = precio;
     }
 
+    public Transporte getIdTransporte() {
+        return idTransporte;
+    }
+
+    public void setIdTransporte(Transporte idTransporte) {
+        this.idTransporte = idTransporte;
+    }
+
+    public Hotel getIdHotel() {
+        return idHotel;
+    }
+
+    public void setIdHotel(Hotel idHotel) {
+        this.idHotel = idHotel;
+    }
+
+    public Evento getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(Evento idEvento) {
+        this.idEvento = idEvento;
+    }
+
     @XmlTransient
     public Collection<ReservaPaquete> getReservaPaqueteCollection() {
         return reservaPaqueteCollection;
@@ -144,33 +173,6 @@ public class Paquete implements Serializable {
 
     public void setReservaPaqueteCollection(Collection<ReservaPaquete> reservaPaqueteCollection) {
         this.reservaPaqueteCollection = reservaPaqueteCollection;
-    }
-
-    @XmlTransient
-    public Collection<Evento> getEventoCollection() {
-        return eventoCollection;
-    }
-
-    public void setEventoCollection(Collection<Evento> eventoCollection) {
-        this.eventoCollection = eventoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Transporte> getTransporteCollection() {
-        return transporteCollection;
-    }
-
-    public void setTransporteCollection(Collection<Transporte> transporteCollection) {
-        this.transporteCollection = transporteCollection;
-    }
-
-    @XmlTransient
-    public Collection<Hotel> getHotelCollection() {
-        return hotelCollection;
-    }
-
-    public void setHotelCollection(Collection<Hotel> hotelCollection) {
-        this.hotelCollection = hotelCollection;
     }
 
     @Override

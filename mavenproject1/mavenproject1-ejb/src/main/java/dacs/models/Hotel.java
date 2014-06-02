@@ -7,18 +7,20 @@
 package dacs.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Hotel.findAll", query = "SELECT h FROM Hotel h"),
     @NamedQuery(name = "Hotel.findByIdHotel", query = "SELECT h FROM Hotel h WHERE h.idHotel = :idHotel"),
+    @NamedQuery(name = "Hotel.findByDescripcion", query = "SELECT h FROM Hotel h WHERE h.descripcion = :descripcion"),
     @NamedQuery(name = "Hotel.findByNombre", query = "SELECT h FROM Hotel h WHERE h.nombre = :nombre"),
     @NamedQuery(name = "Hotel.findByCiudad", query = "SELECT h FROM Hotel h WHERE h.ciudad = :ciudad")})
 public class Hotel implements Serializable {
@@ -39,15 +42,17 @@ public class Hotel implements Serializable {
     @NotNull
     @Column(name = "idHotel")
     private Integer idHotel;
+    @Size(max = 120)
+    @Column(name = "descripcion")
+    private String descripcion;
     @Size(max = 20)
     @Column(name = "Nombre")
     private String nombre;
     @Size(max = 20)
     @Column(name = "Ciudad")
     private String ciudad;
-    @JoinColumn(name = "idPaquete", referencedColumnName = "idPaquete")
-    @ManyToOne(optional = false)
-    private Paquete idPaquete;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHotel")
+    private Collection<Paquete> paqueteCollection;
 
     public Hotel() {
     }
@@ -62,6 +67,14 @@ public class Hotel implements Serializable {
 
     public void setIdHotel(Integer idHotel) {
         this.idHotel = idHotel;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getNombre() {
@@ -80,12 +93,13 @@ public class Hotel implements Serializable {
         this.ciudad = ciudad;
     }
 
-    public Paquete getIdPaquete() {
-        return idPaquete;
+    @XmlTransient
+    public Collection<Paquete> getPaqueteCollection() {
+        return paqueteCollection;
     }
 
-    public void setIdPaquete(Paquete idPaquete) {
-        this.idPaquete = idPaquete;
+    public void setPaqueteCollection(Collection<Paquete> paqueteCollection) {
+        this.paqueteCollection = paqueteCollection;
     }
 
     @Override

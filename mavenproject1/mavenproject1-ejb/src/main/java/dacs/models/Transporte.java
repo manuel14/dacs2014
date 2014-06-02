@@ -7,18 +7,20 @@
 package dacs.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,6 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Transporte.findAll", query = "SELECT t FROM Transporte t"),
     @NamedQuery(name = "Transporte.findByIdTransporte", query = "SELECT t FROM Transporte t WHERE t.idTransporte = :idTransporte"),
+    @NamedQuery(name = "Transporte.findByDescripcion", query = "SELECT t FROM Transporte t WHERE t.descripcion = :descripcion"),
+    @NamedQuery(name = "Transporte.findByNombre", query = "SELECT t FROM Transporte t WHERE t.nombre = :nombre"),
     @NamedQuery(name = "Transporte.findByTipoTransporte", query = "SELECT t FROM Transporte t WHERE t.tipoTransporte = :tipoTransporte")})
 public class Transporte implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -38,12 +42,17 @@ public class Transporte implements Serializable {
     @NotNull
     @Column(name = "idTransporte")
     private Integer idTransporte;
+    @Size(max = 120)
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Size(max = 20)
+    @Column(name = "nombre")
+    private String nombre;
     @Size(max = 20)
     @Column(name = "tipoTransporte")
     private String tipoTransporte;
-    @JoinColumn(name = "idPaquete", referencedColumnName = "idPaquete")
-    @ManyToOne(optional = false)
-    private Paquete idPaquete;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTransporte")
+    private Collection<Paquete> paqueteCollection;
 
     public Transporte() {
     }
@@ -60,6 +69,22 @@ public class Transporte implements Serializable {
         this.idTransporte = idTransporte;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getTipoTransporte() {
         return tipoTransporte;
     }
@@ -68,12 +93,13 @@ public class Transporte implements Serializable {
         this.tipoTransporte = tipoTransporte;
     }
 
-    public Paquete getIdPaquete() {
-        return idPaquete;
+    @XmlTransient
+    public Collection<Paquete> getPaqueteCollection() {
+        return paqueteCollection;
     }
 
-    public void setIdPaquete(Paquete idPaquete) {
-        this.idPaquete = idPaquete;
+    public void setPaqueteCollection(Collection<Paquete> paqueteCollection) {
+        this.paqueteCollection = paqueteCollection;
     }
 
     @Override

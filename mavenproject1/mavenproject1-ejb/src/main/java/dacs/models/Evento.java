@@ -7,21 +7,23 @@
 package dacs.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -43,7 +45,7 @@ public class Evento implements Serializable {
     @NotNull
     @Column(name = "idEvento")
     private Integer idEvento;
-    @Size(max = 20)
+    @Size(max = 120)
     @Column(name = "Descripcion")
     private String descripcion;
     @Column(name = "dia")
@@ -52,9 +54,8 @@ public class Evento implements Serializable {
     @Column(name = "Horario")
     @Temporal(TemporalType.TIME)
     private Date horario;
-    @JoinColumn(name = "idPaquete", referencedColumnName = "idPaquete")
-    @ManyToOne(optional = false)
-    private Paquete idPaquete;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvento")
+    private Collection<Paquete> paqueteCollection;
 
     public Evento() {
     }
@@ -95,12 +96,13 @@ public class Evento implements Serializable {
         this.horario = horario;
     }
 
-    public Paquete getIdPaquete() {
-        return idPaquete;
+    @XmlTransient
+    public Collection<Paquete> getPaqueteCollection() {
+        return paqueteCollection;
     }
 
-    public void setIdPaquete(Paquete idPaquete) {
-        this.idPaquete = idPaquete;
+    public void setPaqueteCollection(Collection<Paquete> paqueteCollection) {
+        this.paqueteCollection = paqueteCollection;
     }
 
     @Override

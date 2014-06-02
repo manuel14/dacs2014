@@ -7,6 +7,7 @@
 package dacs.dao;
 
 import dacs.models.Hotel;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,8 +15,9 @@ import javax.persistence.PersistenceContext;
  *
  * @author Administrator
  */
+@Stateless
 public class HotelFacade extends AbstractFacade<Hotel> {
-     @PersistenceContext(unitName = "dacs")
+      @PersistenceContext(unitName = "dacs")
     private EntityManager em;
 
     @Override
@@ -24,6 +26,5 @@ public class HotelFacade extends AbstractFacade<Hotel> {
     }
     public HotelFacade(){
         super(Hotel.class);
-        
     }
 }

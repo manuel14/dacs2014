@@ -7,6 +7,7 @@
 package dacs.dao;
 
 import dacs.models.Paquete;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,8 +15,9 @@ import javax.persistence.PersistenceContext;
  *
  * @author Administrator
  */
+@Stateless
 public class PaqueteFacade extends AbstractFacade<Paquete> {
-     @PersistenceContext(unitName = "dacs")
+      @PersistenceContext(unitName = "dacs")
     private EntityManager em;
 
     @Override
