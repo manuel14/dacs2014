@@ -1,0 +1,108 @@
+#contentGeneral{
+    width: 100%;
+    margin: 0 auto;
+    background: url(WEB-INF/images/templatemo_body_top.jpg) top center no-repeat;
+}
+#top {
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    clear: both;
+    overflow: hidden;
+}
+
+#topLeft{
+    position: relative;
+    float: left;
+    background-color: #FF6347;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 73%;
+}
+
+#topRight{
+    position: relative;
+    float: right;
+    background-color: #F0E68C;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 25%;
+}
+
+#topRightCuenta{
+    position: relative;
+    background-color: #00FF00;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    clear: both;
+}
+
+#topBarraDeNavegacion{
+    position: relative;
+    background-color: #00FF00;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    clear: both;
+}
+
+#topLogin{
+    position: relative;
+    background-color: #FF0000;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+#topLogo{
+    position: relative;
+    background-color: #00FF00;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    clear: both;
+}
+
+#content{
+    background-color: #7FFF00;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    clear: both;
+    overflow: hidden;
+}
+
+#contentRight{
+    position: relative;
+    float: right;
+    background-color: #DA70D6;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 25%;
+    overflow: hidden;
+}
+
+#contentCenter{
+    position: relative;
+    float: left;
+    background-color: #FFE4E1;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 73%;
+    overflow: hidden;
+}
+
+#contentCenterTabla{
+    position: relative;
+    alignment-adjust: central;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 75%;
+    clear: both
+}
+
+#bottom {
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+    clear: both;
+    overflow: hidden;
+}
