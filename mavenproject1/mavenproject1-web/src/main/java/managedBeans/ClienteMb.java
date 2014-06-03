@@ -6,23 +6,38 @@
 
 package managedBeans;
 
-import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
+import dacs.dao.ClienteFacade;
 import dacs.models.Cliente;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
 /**
  *
  * @author Administrator
  */
 @Named(value = "clienteMb")
-@SessionScoped
-
+@ViewScoped
 public class ClienteMb {
     
+    @EJB
+    private ClienteFacade facade;
+   
+    private Cliente cliente;
+   
+    @PostConstruct
+    public void init(){
+        this.cliente = new Cliente();
+    }
     
-    /**
-     * Creates a new instance of ClienteMb
-     */
-    public ClienteMb() {
+    public Cliente getCliente() {
+        return this.cliente;
+    }
+    
+    public String guardar() {
+        facade.create(cliente);
+        return "ok";
     }
     
 }

@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-application PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Java EE Application 6.0//EN" "http://glassfish.org/dtds/glassfish-application_6_0-1.dtd">
-<glassfish-application/>
+<glassfish-application>
+  <security-role-mapping>
+    <role-name>rolDeAdministrador</role-name>
+    <principal-name>administrador</principal-name>
+  </security-role-mapping>
+  <security-role-mapping>
+    <role-name>rolDeAdministrador</role-name>
+    <principal-name>q</principal-name>
+  </security-role-mapping>
+  <security-role-mapping>
+    <role-name>rolDeCliente</role-name>
+    <principal-name>cliente</principal-name>
+  </security-role-mapping>
+</glassfish-application>
