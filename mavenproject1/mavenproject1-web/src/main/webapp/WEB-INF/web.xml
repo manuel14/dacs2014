@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.jsf</url-pattern>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,7 +19,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
     <security-constraint>
         <display-name>Constraint1</display-name>
@@ -49,16 +49,22 @@
         <auth-method>FORM</auth-method>
         <realm-name>file</realm-name>
         <form-login-config>
-            <form-login-page>/WEB-INF/templates/plantillaPrincipal.xhtml</form-login-page>
-            <form-error-page>/index2.xhtml</form-error-page>
+            <form-login-page>/index.xhtml</form-login-page>
+            <form-error-page>/admin/transportesHome.xhtml</form-error-page>
         </form-login-config>
     </login-config>
     <security-role>
         <description/>
         <role-name>rolDeAdministrador</role-name>
+
     </security-role>
     <security-role>
         <description/>
         <role-name>rolDeCliente</role-name>
+       
     </security-role>
-</web-app>
+
+    
+    
+    
+    </web-app>
