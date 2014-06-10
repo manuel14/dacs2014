@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class HotelFacade extends AbstractFacade<Hotel> {
-      @PersistenceContext(unitName = "dacs")
+    @PersistenceContext(unitName = "dacs")
     private EntityManager em;
 
     @Override

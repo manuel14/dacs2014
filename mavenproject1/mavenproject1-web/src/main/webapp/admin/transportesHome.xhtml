@@ -54,26 +54,28 @@
                                     Nuevo transporte
                                 </f:facet>
                                 <p:outputLabel for="txtNombre" value="Nombre:"/>
-                                <p:inputText id="txtNombre" size="50" value="#{transportesMb.nombre}"/>
+                                <p:inputText id="txtNombre" size="50" value="#{transporteMb.transporte.nombre}"/>
 
                                 <p:outputLabel for="lstTipo" value="Tipo:"/>
-                                <p:selectOneMenu id="lstTipo" value="#{transportesMb.tipo}">
+                                <p:selectOneMenu id="lstTipo" value="#{transporteMb.transporte.tipoTransporte}">
                                     <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
                                     <f:selectItem itemLabel="Aereo" itemValue="Aereo"/>
                                     <f:selectItem itemLabel="Micro" itemValue="Micro"/>
                                 </p:selectOneMenu>
 
                                 <p:outputLabel for="txtDescripcion" value="Descripción:"/>
-                                <p:inputTextarea id="txtDescripcion" rows="5" cols="51" value="#{transportesMb.descripcion}"/>
+                                <p:inputTextarea id="txtDescripcion" rows="5" cols="51" value="#{transporteMb.transporte.descripcion}"/>
 
                                 <f:facet name="footer">
                                     <p:growl id="message" showDetail="true" />
                                     <p:commandButton value="Guardar" 
                                                      icon="ui-icon-disk" 
-                                                     actionListener="#{transportesMb.guardarTransporte}"
+                                                     actionListener="#{transporteMb.guardar()}"
+                                                     
                                                      update="message"
                                                      onclick="PF('dialog').hide();"
                                                      />
+                                                        
                                     <p:commandButton value="Cancelar" icon="ui-icon-close" onclick="PF('dialog').hide();"/>
                                 </f:facet>
                             </p:panelGrid>

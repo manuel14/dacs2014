@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Administrator
  */
-@Stateless 
+@Stateless
 public class TransporteFacade extends AbstractFacade<Transporte> {
      @PersistenceContext(unitName = "dacs")
     private EntityManager em;

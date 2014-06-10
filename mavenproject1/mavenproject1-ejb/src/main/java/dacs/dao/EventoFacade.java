@@ -15,9 +15,9 @@ import javax.persistence.PersistenceContext;
  *
  * @author Administrator
  */
-@Stateless 
+@Stateless
 public class EventoFacade extends AbstractFacade<Evento> {
-      @PersistenceContext(unitName = "dacs")
+    @PersistenceContext(unitName = "dacs")
     private EntityManager em;
 
     @Override

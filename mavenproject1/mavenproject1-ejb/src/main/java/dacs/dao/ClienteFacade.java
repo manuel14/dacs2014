@@ -7,6 +7,7 @@
 package dacs.dao;
 
 import dacs.models.Cliente;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,6 +15,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Administrator
  */
+@Stateless
 public class ClienteFacade extends AbstractFacade<Cliente> {
     @PersistenceContext(unitName = "dacs")
     private EntityManager em;
@@ -22,8 +24,7 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
-    public ClienteFacade() {
+    public ClienteFacade(){
         super(Cliente.class);
     }
 }

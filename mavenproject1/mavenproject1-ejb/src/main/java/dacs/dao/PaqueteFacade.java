@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class PaqueteFacade extends AbstractFacade<Paquete> {
-      @PersistenceContext(unitName = "dacs")
+    @PersistenceContext(unitName = "dacs")
     private EntityManager em;
 
     @Override
