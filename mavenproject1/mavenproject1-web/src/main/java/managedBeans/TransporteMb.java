@@ -8,10 +8,11 @@ package managedBeans;
 import dacs.dao.TransporteFacade;
 import dacs.models.Transporte;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -25,6 +26,22 @@ public class TransporteMb implements Serializable {
 
     @EJB
     private TransporteFacade transportefacade;
+    @ManagedProperty("#{transportes}")
+    private List<Transporte> transportes = null;
+
+    public List<Transporte> getTransportes() {
+        if(this.transportes == null) {
+            this.transportes = transportefacade.ListarTransportes();
+        }
+        return transportes;
+    }
+
+    public void setTransportes(List<Transporte> transportes) {
+        this.transportes = transportes;
+    }
+   
+    
+    
 
     
 

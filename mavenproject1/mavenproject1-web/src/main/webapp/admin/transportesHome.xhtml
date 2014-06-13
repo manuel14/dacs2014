@@ -14,29 +14,33 @@
                 <h1 align="left">Esta es la página de administración de transportes</h1>
                 <div id="contentCenterTabla">
                     <h:form>
-                        <p:dataTable id="listadoDeTransportes" selectionMode="single">
+                        <p:dataTable id="listadoDeTransportes" 
+                                     var="transporte" 
+                                     selectionMode="single" rowKey="#{transporte.nombre}"  
+                                     value="#{transporteMb.transportes}" >
                             <f:facet name="header">
                                 Listado de Transportes
                             </f:facet>
                             <p:column headerText="Id">
+                                <h:outputText value="#{transporte.idTransporte}" />
 
                             </p:column>
 
                             <p:column headerText="Nombre">
-
+                                <h:outputText value="#{transporte.nombre}" />
                             </p:column>
 
                             <p:column headerText="Tipo">
-
+                                <h:outputText value="#{transporte.tipoTransporte}" />
                             </p:column>
 
                             <p:column headerText="Descripción">
-
+                                <h:outputText value="#{transporte.descripcion}" />
                             </p:column>
 
                             <f:facet name="footer">
                                 <p:commandButton value="Nuevo" type="button" onclick="PF('dialog').show();"/>
-                                <p:commandButton value="Editar"/>
+                                <p:commandButton value="Editar" onclick="PF('dialog').show();"/>
                                 <p:commandButton value="Eliminar"/>
                             </f:facet>
                         </p:dataTable>
@@ -48,6 +52,8 @@
                               resizable="false" 
                               closable="false"
                               closeOnEscape="true">
+                        
+                        
                         <h:form>
                             <p:panelGrid columns="2">
                                 <f:facet name="header">
