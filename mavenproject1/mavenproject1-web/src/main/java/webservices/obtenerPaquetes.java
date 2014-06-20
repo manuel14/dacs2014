@@ -9,8 +9,9 @@ package webservices;
 import dacs.dao.PaqueteFacade;
 import dacs.models.Paquete;
 import java.util.List;
-import javax.jws.WebService;
+import javax.ejb.EJB;
 import javax.jws.WebMethod;
+import javax.jws.WebService;
 
 /**
  *
@@ -24,6 +25,7 @@ public class obtenerPaquetes {
      * @return 
      */
     
+    @EJB
     private PaqueteFacade paquetefacade;
     private List<Paquete> paquetes=null;
     @WebMethod(operationName = "ListarTodo")

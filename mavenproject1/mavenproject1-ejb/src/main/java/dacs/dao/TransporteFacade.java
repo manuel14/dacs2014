@@ -7,12 +7,10 @@
 package dacs.dao;
 
 import dacs.models.Transporte;
-import static java.util.Collections.list;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -36,8 +34,7 @@ public class TransporteFacade extends AbstractFacade<Transporte> {
     }
     
     public List<Transporte> ListarTransportes(){
-        //javax.persistence.Query q = getEntityManager().createQuery("select t from Transporte");
-        //List<Transporte> transportes =  q.getResultList();
+        
         
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         

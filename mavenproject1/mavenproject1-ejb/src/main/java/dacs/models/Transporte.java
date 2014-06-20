@@ -45,7 +45,9 @@ public class Transporte implements Serializable {
     
     @Column(name = "idTransporte")
     private Integer idTransporte;
+    @NotNull
     @Size(max = 120)
+    
     @Column(name = "descripcion")
     private String descripcion;
     @Size(max = 20)

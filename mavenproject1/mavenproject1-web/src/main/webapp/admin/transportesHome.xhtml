@@ -13,14 +13,23 @@
             <ui:define name="content">
                 <h1 align="left">Esta es la página de administración de transportes</h1>
                 <div id="contentCenterTabla">
-                    <h:form>
-                        <p:dataTable id="listadoDeTransportes" 
-                                     var="transporte" 
-                                     selectionMode="single" rowKey="#{transporte.nombre}"  
-                                     value="#{transporteMb.transportes}" >
+                    <h:form id="form">
+                        <p:dataTable id="listadoDeTransportes" var="transporte" selectionMode="single" selection="#{transporteMb.transporte}" rowKey="#{transporte.idTransporte}" value="#{transporteMb.transportes}" >
                             <f:facet name="header">
                                 Listado de Transportes
                             </f:facet>
+                            <p:ajax event="rowSelect" update=":form1:panel1">
+                                
+                                
+                                
+                            </p:ajax>
+                            
+                          
+                            
+                            
+                                
+                                
+                            
                             <p:column headerText="Id">
                                 <h:outputText value="#{transporte.idTransporte}" />
 
@@ -39,12 +48,32 @@
                             </p:column>
 
                             <f:facet name="footer">
-                                <p:commandButton value="Nuevo" type="button" onclick="PF('dialog').show();"/>
-                                <p:commandButton value="Editar" onclick="PF('dialog').show();"/>
-                                <p:commandButton value="Eliminar"/>
+                                <p:commandButton value="Nuevo" type="button" onclick="PF('dialog').show();" />
+                                <p:commandButton value="Editar" onclick="PF('dialog').show();" />
+                                <p:commandButton value="Eliminar" onclick="PF('cd2').show()"/>
                             </f:facet>
                         </p:dataTable>
                     </h:form>
+                    
+                    <p:confirmDialog 
+                        message="Desea Eliminar el Transporte"
+                        
+                        header="eliminando transporte"
+                        widgetVar="cd2"
+                        
+                        
+                        
+                        closeOnEscape="true"
+                        
+                        >
+                        <h:form>
+                        <p:commandButton value="Si" actionListener="#{transporteMb.eliminar()}" onclick="PF('cd2').hide()"  update=':form:listadoDeTransportes' ajax='true' />
+                        <p:commandButton value="No" onclick="PF('cd2').hide()" />
+                        
+                        
+                        </h:form>
+                        
+                    </p:confirmDialog>
 
                     <p:dialog header="Nuevo transporte" 
                               widgetVar="dialog" 
@@ -53,9 +82,8 @@
                               closable="false"
                               closeOnEscape="true">
                         
-                        
-                        <h:form>
-                            <p:panelGrid columns="2">
+                        <h:form id="form1">
+                            <p:panelGrid id="panel1" columns="2">
                                 <f:facet name="header">
                                     Nuevo transporte
                                 </f:facet>
@@ -63,7 +91,7 @@
                                 <p:inputText id="txtNombre" size="50" value="#{transporteMb.transporte.nombre}"/>
 
                                 <p:outputLabel for="lstTipo" value="Tipo:"/>
-                                <p:selectOneMenu id="lstTipo" value="#{transporteMb.transporte.tipoTransporte}">
+                                <p:selectOneMenu id="lstTipo"  value="#{transporteMb.transporte.tipoTransporte}">
                                     <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
                                     <f:selectItem itemLabel="Aereo" itemValue="Aereo"/>
                                     <f:selectItem itemLabel="Micro" itemValue="Micro"/>
@@ -77,8 +105,8 @@
                                     <p:commandButton value="Guardar" 
                                                      icon="ui-icon-disk" 
                                                      actionListener="#{transporteMb.guardar()}"
+                                                     update='message'
                                                      
-                                                     update="message"
                                                      onclick="PF('dialog').hide();"
                                                      />
                                                         
@@ -87,6 +115,10 @@
                             </p:panelGrid>
                         </h:form>
                     </p:dialog> 
+                    
+                    
+                        
+                        
                 </div>
 
             </ui:define>
