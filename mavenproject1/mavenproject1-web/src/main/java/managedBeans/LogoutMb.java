@@ -6,6 +6,7 @@
 
 package managedBeans;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ViewScoped
 @ManagedBean(name = "logoutMb")
-public class LogoutMb {
+public class LogoutMb implements Serializable {
       private static Logger log = Logger.getLogger(LogoutMb.class.getName());
 
     public LogoutMb() {
@@ -32,7 +33,7 @@ public class LogoutMb {
   
       
      public String logout() {
-    String result="/index?faces-redirect=true";
+    String result="/inicio?faces-redirect=true";
     
     FacesContext context = FacesContext.getCurrentInstance();
     HttpServletRequest request = (HttpServletRequest)context.getExternalContext().getRequest();
