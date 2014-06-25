@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -29,49 +28,46 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(schema = "test",name = "Transporte")
+@Table(name = "transporte", schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Transporte.findAll", query = "SELECT t FROM Transporte t"),
-    @NamedQuery(name = "Transporte.findByIdTransporte", query = "SELECT t FROM Transporte t WHERE t.idTransporte = :idTransporte"),
+    @NamedQuery(name = "Transporte.findByIdtransporte", query = "SELECT t FROM Transporte t WHERE t.idtransporte = :idtransporte"),
     @NamedQuery(name = "Transporte.findByDescripcion", query = "SELECT t FROM Transporte t WHERE t.descripcion = :descripcion"),
     @NamedQuery(name = "Transporte.findByNombre", query = "SELECT t FROM Transporte t WHERE t.nombre = :nombre"),
-    @NamedQuery(name = "Transporte.findByTipoTransporte", query = "SELECT t FROM Transporte t WHERE t.tipoTransporte = :tipoTransporte")})
+    @NamedQuery(name = "Transporte.findByTipotransporte", query = "SELECT t FROM Transporte t WHERE t.tipotransporte = :tipotransporte")})
 public class Transporte implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    
-    @Column(name = "idTransporte")
-    private Integer idTransporte;
-    @NotNull
-    @Size(max = 120)
-    
+    @Column(name = "idtransporte")
+    private Integer idtransporte;
+    @Size(max = 150)
     @Column(name = "descripcion")
     private String descripcion;
-    @Size(max = 20)
+    @Size(max = 50)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 20)
-    @Column(name = "tipoTransporte")
-    private String tipoTransporte;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTransporte")
+    @Size(max = 50)
+    @Column(name = "tipotransporte")
+    private String tipotransporte;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idtransporte")
     private Collection<Paquete> paqueteCollection;
 
     public Transporte() {
     }
 
-    public Transporte(Integer idTransporte) {
-        this.idTransporte = idTransporte;
+    public Transporte(Integer idtransporte) {
+        this.idtransporte = idtransporte;
     }
 
-    public Integer getIdTransporte() {
-        return idTransporte;
+    public Integer getIdtransporte() {
+        return idtransporte;
     }
 
-    public void setIdTransporte(Integer idTransporte) {
-        this.idTransporte = idTransporte;
+    public void setIdtransporte(Integer idtransporte) {
+        this.idtransporte = idtransporte;
     }
 
     public String getDescripcion() {
@@ -90,12 +86,12 @@ public class Transporte implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getTipoTransporte() {
-        return tipoTransporte;
+    public String getTipotransporte() {
+        return tipotransporte;
     }
 
-    public void setTipoTransporte(String tipoTransporte) {
-        this.tipoTransporte = tipoTransporte;
+    public void setTipotransporte(String tipotransporte) {
+        this.tipotransporte = tipotransporte;
     }
 
     @XmlTransient
@@ -110,7 +106,7 @@ public class Transporte implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTransporte != null ? idTransporte.hashCode() : 0);
+        hash += (idtransporte != null ? idtransporte.hashCode() : 0);
         return hash;
     }
 
@@ -121,7 +117,7 @@ public class Transporte implements Serializable {
             return false;
         }
         Transporte other = (Transporte) object;
-        if ((this.idTransporte == null && other.idTransporte != null) || (this.idTransporte != null && !this.idTransporte.equals(other.idTransporte))) {
+        if ((this.idtransporte == null && other.idtransporte != null) || (this.idtransporte != null && !this.idtransporte.equals(other.idtransporte))) {
             return false;
         }
         return true;
@@ -129,7 +125,7 @@ public class Transporte implements Serializable {
 
     @Override
     public String toString() {
-        return "dacs.models.Transporte[ idTransporte=" + idTransporte + " ]";
+        return "dacs.models.Transporte[ idtransporte=" + idtransporte + " ]";
     }
     
 }

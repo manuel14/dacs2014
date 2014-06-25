@@ -34,75 +34,82 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(name = "Paquete",schema = "test")
+@Table(name = "paquete" , schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Paquete.findAll", query = "SELECT p FROM Paquete p"),
-    @NamedQuery(name = "Paquete.findByIdPaquete", query = "SELECT p FROM Paquete p WHERE p.idPaquete = :idPaquete"),
+    @NamedQuery(name = "Paquete.findByIdpaquete", query = "SELECT p FROM Paquete p WHERE p.idpaquete = :idpaquete"),
     @NamedQuery(name = "Paquete.findByCantidad", query = "SELECT p FROM Paquete p WHERE p.cantidad = :cantidad"),
+    @NamedQuery(name = "Paquete.findByOrigen", query = "SELECT p FROM Paquete p WHERE p.origen = :origen"),
+    @NamedQuery(name = "Paquete.findByDestino", query = "SELECT p FROM Paquete p WHERE p.destino = :destino"),
     @NamedQuery(name = "Paquete.findByNombre", query = "SELECT p FROM Paquete p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "Paquete.findByFechaInicio", query = "SELECT p FROM Paquete p WHERE p.fechaInicio = :fechaInicio"),
-    @NamedQuery(name = "Paquete.findByFechaFin", query = "SELECT p FROM Paquete p WHERE p.fechaFin = :fechaFin"),
+    @NamedQuery(name = "Paquete.findByFechainicio", query = "SELECT p FROM Paquete p WHERE p.fechainicio = :fechainicio"),
+    @NamedQuery(name = "Paquete.findByFechafin", query = "SELECT p FROM Paquete p WHERE p.fechafin = :fechafin"),
     @NamedQuery(name = "Paquete.findByPrecio", query = "SELECT p FROM Paquete p WHERE p.precio = :precio")})
 public class Paquete implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idPaquete")
-    private Integer idPaquete;
+    @Column(name = "idpaquete")
+    private Integer idpaquete;
     @Column(name = "cantidad")
     private Integer cantidad;
-    @Size(max = 20)
-    @Column(name = "Nombre")
+    @Size(max = 50)
+    @Column(name = "origen")
+    private String origen;
+    @Size(max = 50)
+    @Column(name = "destino")
+    private String destino;
+    @Size(max = 50)
+    @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fechaInicio")
+    @Column(name = "fechainicio")
     @Temporal(TemporalType.DATE)
-    private Date fechaInicio;
+    private Date fechainicio;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fechaFin")
+    @Column(name = "fechafin")
     @Temporal(TemporalType.DATE)
-    private Date fechaFin;
+    private Date fechafin;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "Precio")
+    
+    @Column(name = "precio")
     private float precio;
-    @JoinColumn(name = "idTransporte", referencedColumnName = "idTransporte")
+    @JoinColumn(name = "idtransporte", referencedColumnName = "idtransporte")
     @ManyToOne(optional = false)
-    private Transporte idTransporte;
-    @JoinColumn(name = "idHotel", referencedColumnName = "idHotel")
+    private Transporte idtransporte;
+    @JoinColumn(name = "idhotel", referencedColumnName = "idhotel")
     @ManyToOne(optional = false)
-    private Hotel idHotel;
-    @JoinColumn(name = "idEvento", referencedColumnName = "idEvento")
+    private Hotel idhotel;
+    @JoinColumn(name = "idevento", referencedColumnName = "idevento")
     @ManyToOne(optional = false)
-    private Evento idEvento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaquete")
+    private Evento idevento;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpaquete")
     private Collection<ReservaPaquete> reservaPaqueteCollection;
 
     public Paquete() {
     }
 
-    public Paquete(Integer idPaquete) {
-        this.idPaquete = idPaquete;
+    public Paquete(Integer idpaquete) {
+        this.idpaquete = idpaquete;
     }
 
-    public Paquete(Integer idPaquete, Date fechaInicio, Date fechaFin, float precio) {
-        this.idPaquete = idPaquete;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+    public Paquete(Integer idpaquete, Date fechainicio, Date fechafin, float precio) {
+        this.idpaquete = idpaquete;
+        this.fechainicio = fechainicio;
+        this.fechafin = fechafin;
         this.precio = precio;
     }
 
-    public Integer getIdPaquete() {
-        return idPaquete;
+    public Integer getIdpaquete() {
+        return idpaquete;
     }
 
-    public void setIdPaquete(Integer idPaquete) {
-        this.idPaquete = idPaquete;
+    public void setIdpaquete(Integer idpaquete) {
+        this.idpaquete = idpaquete;
     }
 
     public Integer getCantidad() {
@@ -113,6 +120,22 @@ public class Paquete implements Serializable {
         this.cantidad = cantidad;
     }
 
+    public String getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -121,20 +144,20 @@ public class Paquete implements Serializable {
         this.nombre = nombre;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public Date getFechainicio() {
+        return fechainicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setFechainicio(Date fechainicio) {
+        this.fechainicio = fechainicio;
     }
 
-    public Date getFechaFin() {
-        return fechaFin;
+    public Date getFechafin() {
+        return fechafin;
     }
 
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setFechafin(Date fechafin) {
+        this.fechafin = fechafin;
     }
 
     public float getPrecio() {
@@ -145,28 +168,28 @@ public class Paquete implements Serializable {
         this.precio = precio;
     }
 
-    public Transporte getIdTransporte() {
-        return idTransporte;
+    public Transporte getIdtransporte() {
+        return idtransporte;
     }
 
-    public void setIdTransporte(Transporte idTransporte) {
-        this.idTransporte = idTransporte;
+    public void setIdtransporte(Transporte idtransporte) {
+        this.idtransporte = idtransporte;
     }
 
-    public Hotel getIdHotel() {
-        return idHotel;
+    public Hotel getIdhotel() {
+        return idhotel;
     }
 
-    public void setIdHotel(Hotel idHotel) {
-        this.idHotel = idHotel;
+    public void setIdhotel(Hotel idhotel) {
+        this.idhotel = idhotel;
     }
 
-    public Evento getIdEvento() {
-        return idEvento;
+    public Evento getIdevento() {
+        return idevento;
     }
 
-    public void setIdEvento(Evento idEvento) {
-        this.idEvento = idEvento;
+    public void setIdevento(Evento idevento) {
+        this.idevento = idevento;
     }
 
     @XmlTransient
@@ -181,7 +204,7 @@ public class Paquete implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idPaquete != null ? idPaquete.hashCode() : 0);
+        hash += (idpaquete != null ? idpaquete.hashCode() : 0);
         return hash;
     }
 
@@ -192,7 +215,7 @@ public class Paquete implements Serializable {
             return false;
         }
         Paquete other = (Paquete) object;
-        if ((this.idPaquete == null && other.idPaquete != null) || (this.idPaquete != null && !this.idPaquete.equals(other.idPaquete))) {
+        if ((this.idpaquete == null && other.idpaquete != null) || (this.idpaquete != null && !this.idpaquete.equals(other.idpaquete))) {
             return false;
         }
         return true;
@@ -200,7 +223,7 @@ public class Paquete implements Serializable {
 
     @Override
     public String toString() {
-        return "dacs.models.Paquete[ idPaquete=" + idPaquete + " ]";
+        return "dacs.models.Paquete[ idpaquete=" + idpaquete + " ]";
     }
     
 }

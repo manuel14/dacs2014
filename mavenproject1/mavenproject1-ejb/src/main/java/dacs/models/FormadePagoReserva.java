@@ -27,62 +27,61 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Administrator
  */
 @Entity
-@Table(name = "Forma de Pago Reserva", schema = "test")
+@Table(name = "formadepagoreserva" , schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FormadePagoReserva.findAll", query = "SELECT f FROM FormadePagoReserva f"),
-    @NamedQuery(name = "FormadePagoReserva.findByIdForma", query = "SELECT f FROM FormadePagoReserva f WHERE f.idForma = :idForma"),
-    @NamedQuery(name = "FormadePagoReserva.findByTipoPago", query = "SELECT f FROM FormadePagoReserva f WHERE f.tipoPago = :tipoPago"),
+    @NamedQuery(name = "FormadePagoReserva.findByIdforma", query = "SELECT f FROM FormadePagoReserva f WHERE f.idforma = :idforma"),
+    @NamedQuery(name = "FormadePagoReserva.findByTipopago", query = "SELECT f FROM FormadePagoReserva f WHERE f.tipopago = :tipopago"),
     @NamedQuery(name = "FormadePagoReserva.findByDescripcion", query = "SELECT f FROM FormadePagoReserva f WHERE f.descripcion = :descripcion")})
 public class FormadePagoReserva implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idForma")
-    private Integer idForma;
+    @Column(name = "idforma")
+    private Integer idforma;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "tipoPago")
-    private String tipoPago;
-    @Size(max = 120)
+    @Size(min = 1, max = 50)
+    @Column(name = "tipopago")
+    private String tipopago;
+    @Size(max = 150)
     @Column(name = "descripcion")
     private String descripcion;
-    @JoinColumn(name = "idReservaPaquete", referencedColumnName = "idReservaPaquete")
+    @JoinColumn(name = "idreservapaquete", referencedColumnName = "idreservapaquete")
     @ManyToOne(optional = false)
-    private ReservaPaquete idReservaPaquete;
-    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+    private ReservaPaquete idreservapaquete;
+    @JoinColumn(name = "idcliente", referencedColumnName = "idcliente")
     @ManyToOne(optional = false)
-    private Cliente idCliente;
+    private Cliente idcliente;
 
     public FormadePagoReserva() {
     }
 
-    public FormadePagoReserva(Integer idForma) {
-        this.idForma = idForma;
+    public FormadePagoReserva(Integer idforma) {
+        this.idforma = idforma;
     }
 
-    public FormadePagoReserva(Integer idForma, String tipoPago) {
-        this.idForma = idForma;
-        this.tipoPago = tipoPago;
+    public FormadePagoReserva(Integer idforma, String tipopago) {
+        this.idforma = idforma;
+        this.tipopago = tipopago;
     }
 
-    public Integer getIdForma() {
-        return idForma;
+    public Integer getIdforma() {
+        return idforma;
     }
 
-    public void setIdForma(Integer idForma) {
-        this.idForma = idForma;
+    public void setIdforma(Integer idforma) {
+        this.idforma = idforma;
     }
 
-    public String getTipoPago() {
-        return tipoPago;
+    public String getTipopago() {
+        return tipopago;
     }
 
-    public void setTipoPago(String tipoPago) {
-        this.tipoPago = tipoPago;
+    public void setTipopago(String tipopago) {
+        this.tipopago = tipopago;
     }
 
     public String getDescripcion() {
@@ -93,26 +92,26 @@ public class FormadePagoReserva implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public ReservaPaquete getIdReservaPaquete() {
-        return idReservaPaquete;
+    public ReservaPaquete getIdreservapaquete() {
+        return idreservapaquete;
     }
 
-    public void setIdReservaPaquete(ReservaPaquete idReservaPaquete) {
-        this.idReservaPaquete = idReservaPaquete;
+    public void setIdreservapaquete(ReservaPaquete idreservapaquete) {
+        this.idreservapaquete = idreservapaquete;
     }
 
-    public Cliente getIdCliente() {
-        return idCliente;
+    public Cliente getIdcliente() {
+        return idcliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setIdcliente(Cliente idcliente) {
+        this.idcliente = idcliente;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idForma != null ? idForma.hashCode() : 0);
+        hash += (idforma != null ? idforma.hashCode() : 0);
         return hash;
     }
 
@@ -123,7 +122,7 @@ public class FormadePagoReserva implements Serializable {
             return false;
         }
         FormadePagoReserva other = (FormadePagoReserva) object;
-        if ((this.idForma == null && other.idForma != null) || (this.idForma != null && !this.idForma.equals(other.idForma))) {
+        if ((this.idforma == null && other.idforma != null) || (this.idforma != null && !this.idforma.equals(other.idforma))) {
             return false;
         }
         return true;
@@ -131,7 +130,7 @@ public class FormadePagoReserva implements Serializable {
 
     @Override
     public String toString() {
-        return "dacs.models.FormadePagoReserva[ idForma=" + idForma + " ]";
+        return "dacs.models.FormadePagoReserva[ idforma=" + idforma + " ]";
     }
     
 }

@@ -30,7 +30,7 @@ public class TransporteMb implements Serializable {
     
     public List<Transporte> getTransportes() {
         if (this.transportes==null) {
-            transportes = transportefacade.ListarTransportes();
+            this.transportes = transportefacade.ListarTransportes();
             
         }
  
@@ -40,17 +40,21 @@ public class TransporteMb implements Serializable {
     public void setTransportes(List<Transporte> transportes) {
         this.transportes = transportes;
     }
+
+    
    
     
     
 
     
     
-    private Transporte transporte;
+    private Transporte transporte = new Transporte();
+
+    
     
 
    
-
+    
     
      
 
@@ -75,8 +79,8 @@ public class TransporteMb implements Serializable {
 
     public void guardar() {
         try {
-            if(this.transporte.getIdTransporte()!=null){
-                transportefacade.edit(transporte);
+            if(this.transporte.getIdtransporte()!=null){
+                transportefacade.edit(this.transporte);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Transporte modificado exitosamente!"));
             }
             else{

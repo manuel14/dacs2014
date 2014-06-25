@@ -7,9 +7,14 @@
 package dacs.dao;
 
 import dacs.models.Evento;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -26,5 +31,21 @@ public class EventoFacade extends AbstractFacade<Evento> {
     }
     public EventoFacade(){
         super(Evento.class);
+    }
+    
+     public List<Evento> ListarEventos(){
+        
+        
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        
+        CriteriaQuery<Evento> q2 = builder.createQuery(Evento.class);
+        Root<Evento> root = q2.from(Evento.class);        
+        q2.select(root);
+        
+        TypedQuery<Evento> tq = em.createQuery(q2);
+        
+        
+        
+        return tq.getResultList();
     }
 }

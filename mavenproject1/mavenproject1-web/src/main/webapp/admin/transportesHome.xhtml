@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
@@ -14,7 +15,7 @@
                 <h1 align="left">Esta es la página de administración de transportes</h1>
                 <div id="contentCenterTabla">
                     <h:form id="form">
-                        <p:dataTable id="listadoDeTransportes" var="transporte" selectionMode="single" selection="#{transporteMb.transporte}" rowKey="#{transporte.idTransporte}" value="#{transporteMb.transportes}" >
+                        <p:dataTable id="listadoDeTransportes" var="transporte" selectionMode="single" selection="#{transporteMb.transporte}" rowKey="#{transporte.idtransporte}" value="#{transporteMb.transportes}" >
                             <f:facet name="header">
                                 Listado de Transportes
                             </f:facet>
@@ -24,6 +25,11 @@
                                 
                             </p:ajax>
                             
+                            <p:ajax event="rowEdit" update=":form:listadoDeTransportes">
+                                
+                            </p:ajax>
+                            
+                            
                           
                             
                             
@@ -31,7 +37,7 @@
                                 
                             
                             <p:column headerText="Id">
-                                <h:outputText value="#{transporte.idTransporte}" />
+                                <h:outputText value="#{transporte.idtransporte}" />
 
                             </p:column>
 
@@ -40,7 +46,7 @@
                             </p:column>
 
                             <p:column headerText="Tipo">
-                                <h:outputText value="#{transporte.tipoTransporte}" />
+                                <h:outputText value="#{transporte.tipotransporte}" />
                             </p:column>
 
                             <p:column headerText="Descripción">
@@ -67,7 +73,7 @@
                         
                         >
                         <h:form>
-                        <p:commandButton value="Si" actionListener="#{transporteMb.eliminar()}" onclick="PF('cd2').hide()"  update=':form:listadoDeTransportes' ajax='true' />
+                        <p:commandButton value="Si" actionListener="#{transporteMb.eliminar()}" onclick="PF('cd2').hide()"   />
                         <p:commandButton value="No" onclick="PF('cd2').hide()" />
                         
                         
@@ -80,9 +86,10 @@
                               modal="true" 
                               resizable="false" 
                               closable="false"
+                              
                               closeOnEscape="true">
-                        
-                        <h:form id="form1">
+                              
+                        <h:form id="form1" >
                             <p:panelGrid id="panel1" columns="2">
                                 <f:facet name="header">
                                     Nuevo transporte
@@ -91,14 +98,14 @@
                                 <p:inputText id="txtNombre" size="50" value="#{transporteMb.transporte.nombre}"/>
 
                                 <p:outputLabel for="lstTipo" value="Tipo:"/>
-                                <p:selectOneMenu id="lstTipo"  value="#{transporteMb.transporte.tipoTransporte}">
+                                <p:selectOneMenu id="lstTipo"  value="#{transporteMb.transporte.tipotransporte}">
                                     <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
                                     <f:selectItem itemLabel="Aereo" itemValue="Aereo"/>
                                     <f:selectItem itemLabel="Micro" itemValue="Micro"/>
                                 </p:selectOneMenu>
 
                                 <p:outputLabel for="txtDescripcion" value="Descripción:"/>
-                                <p:inputTextarea id="txtDescripcion" rows="5" cols="51" value="#{transporteMb.transporte.descripcion}"/>
+                                <p:inputTextarea id="txtDescripcion" rows="5" cols="51" value="#{transporteMb.transporte.descripcion}" />
 
                                 <f:facet name="footer">
                                     <p:growl id="message" showDetail="true" />
@@ -106,7 +113,8 @@
                                                      icon="ui-icon-disk" 
                                                      actionListener="#{transporteMb.guardar()}"
                                                      update='message'
-                                                     
+                                                     ajax="true"
+                                                     resetValues="True"
                                                      onclick="PF('dialog').hide();"
                                                      />
                                                         

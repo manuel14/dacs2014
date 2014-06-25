@@ -29,11 +29,11 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(schema = "test",name = "Cliente")
+@Table(name = "cliente" , schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
-    @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.idCliente = :idCliente"),
+    @NamedQuery(name = "Cliente.findByIdcliente", query = "SELECT c FROM Cliente c WHERE c.idcliente = :idcliente"),
     @NamedQuery(name = "Cliente.findByMail", query = "SELECT c FROM Cliente c WHERE c.mail = :mail"),
     @NamedQuery(name = "Cliente.findByUsuario", query = "SELECT c FROM Cliente c WHERE c.usuario = :usuario"),
     @NamedQuery(name = "Cliente.findByContrase\u00f1a", query = "SELECT c FROM Cliente c WHERE c.contrase\u00f1a = :contrase\u00f1a"),
@@ -46,59 +46,58 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idCliente")
-    private Integer idCliente;
+    @Column(name = "idcliente")
+    private Integer idcliente;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 50)
     @Column(name = "mail")
     private String mail;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 50)
     @Column(name = "usuario")
     private String usuario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 50)
     @Column(name = "contrase\u00f1a")
     private String contraseña;
-    @Size(max = 20)
+    @Size(max = 50)
     @Column(name = "cuit")
     private String cuit;
-    @Column(name = "Dni")
+    @Column(name = "dni")
     private Integer dni;
-    @Column(name = "Edad")
+    @Column(name = "edad")
     private Integer edad;
     @Size(max = 30)
-    @Column(name = "Nombre")
+    @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente")
-    private Collection<ReservaPaquete> reservaPaqueteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcliente")
     private Collection<FormadePagoReserva> formadePagoReservaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcliente")
+    private Collection<ReservaPaquete> reservaPaqueteCollection;
 
     public Cliente() {
     }
 
-    public Cliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public Cliente(Integer idcliente) {
+        this.idcliente = idcliente;
     }
 
-    public Cliente(Integer idCliente, String mail, String usuario, String contraseña) {
-        this.idCliente = idCliente;
+    public Cliente(Integer idcliente, String mail, String usuario, String contraseña) {
+        this.idcliente = idcliente;
         this.mail = mail;
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
 
-    public Integer getIdCliente() {
-        return idCliente;
+    public Integer getIdcliente() {
+        return idcliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setIdcliente(Integer idcliente) {
+        this.idcliente = idcliente;
     }
 
     public String getMail() {
@@ -158,15 +157,6 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ReservaPaquete> getReservaPaqueteCollection() {
-        return reservaPaqueteCollection;
-    }
-
-    public void setReservaPaqueteCollection(Collection<ReservaPaquete> reservaPaqueteCollection) {
-        this.reservaPaqueteCollection = reservaPaqueteCollection;
-    }
-
-    @XmlTransient
     public Collection<FormadePagoReserva> getFormadePagoReservaCollection() {
         return formadePagoReservaCollection;
     }
@@ -175,10 +165,19 @@ public class Cliente implements Serializable {
         this.formadePagoReservaCollection = formadePagoReservaCollection;
     }
 
+    @XmlTransient
+    public Collection<ReservaPaquete> getReservaPaqueteCollection() {
+        return reservaPaqueteCollection;
+    }
+
+    public void setReservaPaqueteCollection(Collection<ReservaPaquete> reservaPaqueteCollection) {
+        this.reservaPaqueteCollection = reservaPaqueteCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idCliente != null ? idCliente.hashCode() : 0);
+        hash += (idcliente != null ? idcliente.hashCode() : 0);
         return hash;
     }
 
@@ -189,7 +188,7 @@ public class Cliente implements Serializable {
             return false;
         }
         Cliente other = (Cliente) object;
-        if ((this.idCliente == null && other.idCliente != null) || (this.idCliente != null && !this.idCliente.equals(other.idCliente))) {
+        if ((this.idcliente == null && other.idcliente != null) || (this.idcliente != null && !this.idcliente.equals(other.idcliente))) {
             return false;
         }
         return true;
@@ -197,7 +196,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "dacs.models.Cliente[ idCliente=" + idCliente + " ]";
+        return "dacs.models.Cliente[ idcliente=" + idcliente + " ]";
     }
     
 }

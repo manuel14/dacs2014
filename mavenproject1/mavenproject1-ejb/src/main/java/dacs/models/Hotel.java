@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -29,11 +28,11 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(name = "Hotel",schema = "test")
+@Table(name = "hotel" , schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Hotel.findAll", query = "SELECT h FROM Hotel h"),
-    @NamedQuery(name = "Hotel.findByIdHotel", query = "SELECT h FROM Hotel h WHERE h.idHotel = :idHotel"),
+    @NamedQuery(name = "Hotel.findByIdhotel", query = "SELECT h FROM Hotel h WHERE h.idhotel = :idhotel"),
     @NamedQuery(name = "Hotel.findByDescripcion", query = "SELECT h FROM Hotel h WHERE h.descripcion = :descripcion"),
     @NamedQuery(name = "Hotel.findByNombre", query = "SELECT h FROM Hotel h WHERE h.nombre = :nombre"),
     @NamedQuery(name = "Hotel.findByCiudad", query = "SELECT h FROM Hotel h WHERE h.ciudad = :ciudad")})
@@ -42,34 +41,33 @@ public class Hotel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idHotel")
-    private Integer idHotel;
-    @Size(max = 120)
+    @Column(name = "idhotel")
+    private Integer idhotel;
+    @Size(max = 150)
     @Column(name = "descripcion")
     private String descripcion;
-    @Size(max = 20)
-    @Column(name = "Nombre")
+    @Size(max = 50)
+    @Column(name = "nombre")
     private String nombre;
-    @Size(max = 20)
-    @Column(name = "Ciudad")
+    @Size(max = 50)
+    @Column(name = "ciudad")
     private String ciudad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idhotel")
     private Collection<Paquete> paqueteCollection;
 
     public Hotel() {
     }
 
-    public Hotel(Integer idHotel) {
-        this.idHotel = idHotel;
+    public Hotel(Integer idhotel) {
+        this.idhotel = idhotel;
     }
 
-    public Integer getIdHotel() {
-        return idHotel;
+    public Integer getIdhotel() {
+        return idhotel;
     }
 
-    public void setIdHotel(Integer idHotel) {
-        this.idHotel = idHotel;
+    public void setIdhotel(Integer idhotel) {
+        this.idhotel = idhotel;
     }
 
     public String getDescripcion() {
@@ -108,7 +106,7 @@ public class Hotel implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idHotel != null ? idHotel.hashCode() : 0);
+        hash += (idhotel != null ? idhotel.hashCode() : 0);
         return hash;
     }
 
@@ -119,7 +117,7 @@ public class Hotel implements Serializable {
             return false;
         }
         Hotel other = (Hotel) object;
-        if ((this.idHotel == null && other.idHotel != null) || (this.idHotel != null && !this.idHotel.equals(other.idHotel))) {
+        if ((this.idhotel == null && other.idhotel != null) || (this.idhotel != null && !this.idhotel.equals(other.idhotel))) {
             return false;
         }
         return true;
@@ -127,7 +125,7 @@ public class Hotel implements Serializable {
 
     @Override
     public String toString() {
-        return "dacs.models.Hotel[ idHotel=" + idHotel + " ]";
+        return "dacs.models.Hotel[ idhotel=" + idhotel + " ]";
     }
     
 }

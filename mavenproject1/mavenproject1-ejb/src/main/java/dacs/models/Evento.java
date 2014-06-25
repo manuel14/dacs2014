@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -32,11 +31,11 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(schema = "test")
+@Table(name = "evento" , schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Evento.findAll", query = "SELECT e FROM Evento e"),
-    @NamedQuery(name = "Evento.findByIdEvento", query = "SELECT e FROM Evento e WHERE e.idEvento = :idEvento"),
+    @NamedQuery(name = "Evento.findByIdevento", query = "SELECT e FROM Evento e WHERE e.idevento = :idevento"),
     @NamedQuery(name = "Evento.findByDescripcion", query = "SELECT e FROM Evento e WHERE e.descripcion = :descripcion"),
     @NamedQuery(name = "Evento.findByDia", query = "SELECT e FROM Evento e WHERE e.dia = :dia"),
     @NamedQuery(name = "Evento.findByHorario", query = "SELECT e FROM Evento e WHERE e.horario = :horario")})
@@ -45,34 +44,33 @@ public class Evento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idEvento")
-    private Integer idEvento;
-    @Size(max = 120)
-    @Column(name = "Descripcion")
+    @Column(name = "idevento")
+    private Integer idevento;
+    @Size(max = 150)
+    @Column(name = "descripcion")
     private String descripcion;
+    @Size(max = 100)
     @Column(name = "dia")
-    @Temporal(TemporalType.DATE)
-    private Date dia;
-    @Column(name = "Horario")
+    private String dia;
+    @Column(name = "horario")
     @Temporal(TemporalType.TIME)
     private Date horario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEvento")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idevento")
     private Collection<Paquete> paqueteCollection;
 
     public Evento() {
     }
 
-    public Evento(Integer idEvento) {
-        this.idEvento = idEvento;
+    public Evento(Integer idevento) {
+        this.idevento = idevento;
     }
 
-    public Integer getIdEvento() {
-        return idEvento;
+    public Integer getIdevento() {
+        return idevento;
     }
 
-    public void setIdEvento(Integer idEvento) {
-        this.idEvento = idEvento;
+    public void setIdevento(Integer idevento) {
+        this.idevento = idevento;
     }
 
     public String getDescripcion() {
@@ -83,11 +81,11 @@ public class Evento implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Date getDia() {
+    public String getDia() {
         return dia;
     }
 
-    public void setDia(Date dia) {
+    public void setDia(String dia) {
         this.dia = dia;
     }
 
@@ -111,7 +109,7 @@ public class Evento implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idEvento != null ? idEvento.hashCode() : 0);
+        hash += (idevento != null ? idevento.hashCode() : 0);
         return hash;
     }
 
@@ -122,7 +120,7 @@ public class Evento implements Serializable {
             return false;
         }
         Evento other = (Evento) object;
-        if ((this.idEvento == null && other.idEvento != null) || (this.idEvento != null && !this.idEvento.equals(other.idEvento))) {
+        if ((this.idevento == null && other.idevento != null) || (this.idevento != null && !this.idevento.equals(other.idevento))) {
             return false;
         }
         return true;
@@ -130,7 +128,7 @@ public class Evento implements Serializable {
 
     @Override
     public String toString() {
-        return "dacs.models.Evento[ idEvento=" + idEvento + " ]";
+        return "dacs.models.Evento[ idevento=" + idevento + " ]";
     }
     
 }

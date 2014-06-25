@@ -31,56 +31,55 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(name = "ReservaPaquete",schema = "test")
+@Table(name = "reservapaquete" , schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ReservaPaquete.findAll", query = "SELECT r FROM ReservaPaquete r"),
-    @NamedQuery(name = "ReservaPaquete.findByIdReservaPaquete", query = "SELECT r FROM ReservaPaquete r WHERE r.idReservaPaquete = :idReservaPaquete"),
+    @NamedQuery(name = "ReservaPaquete.findByIdreservapaquete", query = "SELECT r FROM ReservaPaquete r WHERE r.idreservapaquete = :idreservapaquete"),
     @NamedQuery(name = "ReservaPaquete.findByEstado", query = "SELECT r FROM ReservaPaquete r WHERE r.estado = :estado"),
-    @NamedQuery(name = "ReservaPaquete.findByPrecioTotal", query = "SELECT r FROM ReservaPaquete r WHERE r.precioTotal = :precioTotal")})
+    @NamedQuery(name = "ReservaPaquete.findByPreciototal", query = "SELECT r FROM ReservaPaquete r WHERE r.preciototal = :preciototal")})
 public class ReservaPaquete implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idReservaPaquete")
-    private Integer idReservaPaquete;
+    @Column(name = "idreservapaquete")
+    private Integer idreservapaquete;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 50)
     @Column(name = "estado")
     private String estado;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "precioTotal")
-    private Float precioTotal;
-    @JoinColumn(name = "idPaquete", referencedColumnName = "idPaquete")
-    @ManyToOne(optional = false)
-    private Paquete idPaquete;
-    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
-    @ManyToOne(optional = false)
-    private Cliente idCliente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idReservaPaquete")
+    @Column(name = "preciototal")
+    private Float preciototal;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idreservapaquete")
     private Collection<FormadePagoReserva> formadePagoReservaCollection;
+    @JoinColumn(name = "idpaquete", referencedColumnName = "idpaquete")
+    @ManyToOne(optional = false)
+    private Paquete idpaquete;
+    @JoinColumn(name = "idcliente", referencedColumnName = "idcliente")
+    @ManyToOne(optional = false)
+    private Cliente idcliente;
 
     public ReservaPaquete() {
     }
 
-    public ReservaPaquete(Integer idReservaPaquete) {
-        this.idReservaPaquete = idReservaPaquete;
+    public ReservaPaquete(Integer idreservapaquete) {
+        this.idreservapaquete = idreservapaquete;
     }
 
-    public ReservaPaquete(Integer idReservaPaquete, String estado) {
-        this.idReservaPaquete = idReservaPaquete;
+    public ReservaPaquete(Integer idreservapaquete, String estado) {
+        this.idreservapaquete = idreservapaquete;
         this.estado = estado;
     }
 
-    public Integer getIdReservaPaquete() {
-        return idReservaPaquete;
+    public Integer getIdreservapaquete() {
+        return idreservapaquete;
     }
 
-    public void setIdReservaPaquete(Integer idReservaPaquete) {
-        this.idReservaPaquete = idReservaPaquete;
+    public void setIdreservapaquete(Integer idreservapaquete) {
+        this.idreservapaquete = idreservapaquete;
     }
 
     public String getEstado() {
@@ -91,28 +90,12 @@ public class ReservaPaquete implements Serializable {
         this.estado = estado;
     }
 
-    public Float getPrecioTotal() {
-        return precioTotal;
+    public Float getPreciototal() {
+        return preciototal;
     }
 
-    public void setPrecioTotal(Float precioTotal) {
-        this.precioTotal = precioTotal;
-    }
-
-    public Paquete getIdPaquete() {
-        return idPaquete;
-    }
-
-    public void setIdPaquete(Paquete idPaquete) {
-        this.idPaquete = idPaquete;
-    }
-
-    public Cliente getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setPreciototal(Float preciototal) {
+        this.preciototal = preciototal;
     }
 
     @XmlTransient
@@ -124,10 +107,26 @@ public class ReservaPaquete implements Serializable {
         this.formadePagoReservaCollection = formadePagoReservaCollection;
     }
 
+    public Paquete getIdpaquete() {
+        return idpaquete;
+    }
+
+    public void setIdpaquete(Paquete idpaquete) {
+        this.idpaquete = idpaquete;
+    }
+
+    public Cliente getIdcliente() {
+        return idcliente;
+    }
+
+    public void setIdcliente(Cliente idcliente) {
+        this.idcliente = idcliente;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idReservaPaquete != null ? idReservaPaquete.hashCode() : 0);
+        hash += (idreservapaquete != null ? idreservapaquete.hashCode() : 0);
         return hash;
     }
 
@@ -138,7 +137,7 @@ public class ReservaPaquete implements Serializable {
             return false;
         }
         ReservaPaquete other = (ReservaPaquete) object;
-        if ((this.idReservaPaquete == null && other.idReservaPaquete != null) || (this.idReservaPaquete != null && !this.idReservaPaquete.equals(other.idReservaPaquete))) {
+        if ((this.idreservapaquete == null && other.idreservapaquete != null) || (this.idreservapaquete != null && !this.idreservapaquete.equals(other.idreservapaquete))) {
             return false;
         }
         return true;
@@ -146,7 +145,7 @@ public class ReservaPaquete implements Serializable {
 
     @Override
     public String toString() {
-        return "dacs.models.ReservaPaquete[ idReservaPaquete=" + idReservaPaquete + " ]";
+        return "dacs.models.ReservaPaquete[ idreservapaquete=" + idreservapaquete + " ]";
     }
     
 }

@@ -7,9 +7,14 @@
 package dacs.dao;
 
 import dacs.models.Hotel;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -27,4 +32,20 @@ public class HotelFacade extends AbstractFacade<Hotel> {
     public HotelFacade(){
         super(Hotel.class);
     }
-}
+    
+    public List<Hotel> ListarHoteles(){
+         
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        
+        CriteriaQuery<Hotel> q2 = builder.createQuery(Hotel.class);
+        Root<Hotel> root = q2.from(Hotel.class);        
+        q2.select(root);
+        
+        TypedQuery<Hotel> tq = em.createQuery(q2);
+        
+        
+        
+        return tq.getResultList();
+    }
+    }
+

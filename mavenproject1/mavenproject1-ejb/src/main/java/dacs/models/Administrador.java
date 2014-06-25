@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Administrator
  */
 @Entity
-@Table(schema = "test")
+@Table(name = "administrador" , schema = "test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administrador.findAll", query = "SELECT a FROM Administrador a"),
@@ -41,10 +41,10 @@ public class Administrador implements Serializable {
     private Integer idusuario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 50)
     @Column(name = "usuario")
     private String usuario;
-    @Size(max = 20)
+    @Size(max = 50)
     @Column(name = "contrase\u00f1a")
     private String contraseña;
 

@@ -21,50 +21,75 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+    
     <security-constraint>
         <display-name>Constraint1</display-name>
         <web-resource-collection>
-            <web-resource-name>administrador</web-resource-name>
-            <description/>
-            <url-pattern>/admin/*</url-pattern>
+            <web-resource-name>Allowed resources</web-resource-name>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+            <url-pattern>/resources/*</url-pattern>
+            <url-pattern>/inicio.xhtml</url-pattern>
         </web-resource-collection>
-        <auth-constraint>
-            <description/>
-            <role-name>rolDeAdministrador</role-name>
-        </auth-constraint>
+        <!-- No Auth Constraint! -->
     </security-constraint>
+    
     <security-constraint>
-        <display-name>Constraint2</display-name>
+        
         <web-resource-collection>
-            <web-resource-name>cliente</web-resource-name>
-            <description/>
-            <url-pattern>/cliente/*</url-pattern>
+            
+            <web-resource-name>admin</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
         </web-resource-collection>
         <auth-constraint>
-            <description/>
-            <role-name>rolDeCliente</role-name>
+            <role-name>ADMIN</role-name>
+        </auth-constraint>
+        
+    </security-constraint>
+  
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>user</web-resource-name>
+            <url-pattern>/users/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
-        <realm-name>file</realm-name>
+        <realm-name>jdbc-Realm</realm-name>
         <form-login-config>
-            <form-login-page>/index.xhtml</form-login-page>
-            <form-error-page>/admin/transportesHome.xhtml</form-error-page>
+            <form-login-page>/inicio.xhtml</form-login-page>
+            <form-error-page>/admin/paquetesTuristicosHome.xhtml</form-error-page>
         </form-login-config>
     </login-config>
     <security-role>
         <description/>
-        <role-name>rolDeAdministrador</role-name>
+        <role-name>ADMIN</role-name>
 
     </security-role>
     <security-role>
         <description/>
-        <role-name>rolDeCliente</role-name>
+        <role-name>USER</role-name>
        
     </security-role>
 
     
     
     
-    </web-app>
+</web-app>

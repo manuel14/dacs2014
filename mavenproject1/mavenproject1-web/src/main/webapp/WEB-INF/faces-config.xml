@@ -4,13 +4,13 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>/inicio.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>irAAdmin</from-outcome>
+            <from-outcome>admin</from-outcome>
             <to-view-id>/admin/home.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>irACliente</from-outcome>
+            <from-outcome>user</from-outcome>
             <to-view-id>/user/index2.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>

@@ -22,26 +22,21 @@
                 <div id="topRight">
                     <ui:insert name="top">                                    
                         <div id="topLogin" align="center">
-                            <h:form>
-                                <p:panelGrid columns="2">
-                                    <f:facet name="header">
-                                        Iniciar sesión
-                                    </f:facet>
-                                    <p:outputLabel value="Usuario:"/>
-                                    <p:inputText id="txtUsuario" value="#{loginMb.user}"/>
-                                    <p:outputLabel value="Contraseña:"/>
-                                    <p:password id="txtContrasenia" value="#{loginMb.pass}"/>
-                                    <f:facet name="footer">
-                                        <div align="center">
-                                            <p:commandButton id="btnIngresar" value="Ingresar" action="#{loginMb.login}"/>
-                                            <br/>
-                                            <p:commandLink>
-                                                <p:outputLabel value="¿Has olvidado tu contraseña?"/>
-                                            </p:commandLink>
-                                        </div>
-                                    </f:facet>
-                                </p:panelGrid>
-                            </h:form>
+                            <form method="POST" action="j_security_check">
+                                <h:panelGrid columns="2">
+                                  <h:outputLabel for="j_username" value="Username" />
+                                  <p:inputText  id="j_username" required="true" value="" />
+
+                                  <h:outputLabel for="j_password" value="Password" />
+                                  <p:password id="j_password"  required="true" value="" feedback="false"/>
+
+                                  <h:outputText value="" />
+                                  <h:panelGrid columns="2">
+
+                                    <h:commandButton type="submit" value="login" />
+                                  </h:panelGrid>
+                                </h:panelGrid>
+                              </form>
                         </div>
                     </ui:insert>
                 </div>
