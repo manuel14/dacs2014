@@ -8,7 +8,6 @@
         <Node id="admin/transportesNuevo.xhtml" x="400" y="450" zoom="true"/>
         <Node id="index.xhtml" x="650" y="150" zoom="true"/>
         <Node id="user/index2.xhtml" x="150" y="300" zoom="true"/>
-        <Node id="template.xhtml" x="400" y="300" zoom="true"/>
         <Node id="admin/eventosHome.xhtml" x="1150" y="150" zoom="true"/>
         <Node id="admin/hotelesHome.xhtml" x="650" y="300" zoom="true"/>
         <Node id="admin/home.xhtml" x="150" y="600" zoom="true"/>

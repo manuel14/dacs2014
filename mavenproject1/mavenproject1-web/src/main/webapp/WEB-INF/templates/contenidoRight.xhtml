@@ -35,11 +35,13 @@
                 </h:form>
             </div>
             <div>
+                <h:form>
                 <p:imageSwitch effect="fade" id="fadeEffect">
                     <ui:repeat value="#{ImagenesMb.images}" var="image" id="fadeEffectImages">
-                        <p:graphicImage name="/resources/images/#{image}" id="image" />
+                        <p:graphicImage name="./images/#{image}" id="image" />
                     </ui:repeat>
                 </p:imageSwitch>
+                </h:form>
             </div>
             <div align="center">
             <h:form>
