@@ -28,10 +28,7 @@ public class LogoutMb {
     public LogoutMb() {
     }
 
-    
-  
-      
-     public String logout() {
+    public String logout() {
     String result="/index?faces-redirect=true";
     
     FacesContext context = FacesContext.getCurrentInstance();
