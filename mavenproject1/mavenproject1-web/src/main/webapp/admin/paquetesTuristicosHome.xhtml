@@ -12,21 +12,17 @@
 
             <ui:define name="content">
                 Esta es la página de administración de paquetes turísticos
-            </ui:define>
+        
             <div id="contentCenterTabla" >
                 <h:form id="form">
-                    <p:dataTable id="listadoDePaquetes" var="paquete" selectionMode="single" rowKey="#{paqueteMb.paquete.idpaquete}" selection="#{paqueteMb.paquete}" value="#{paqueteMb.paquetes}" >
+                    <p:dataTable id="listadoDePaquetes" var="paquete" selectionMode="single" rowKey="#{paquete.idpaquete}" selection="#{paqueteMb.paquete}" value="#{paqueteMb.paquetes}" >
                         <f:facet name="header" >
                             Listado De Paquetes
                             
                             
                         </f:facet>
                         
-                          <p:ajax event="rowSelect" update=":form1:panel1">
-                                
-                                
-                                
-                            </p:ajax>
+                      
                             
                           
                             
@@ -69,17 +65,7 @@
                                 <h:outputText value="#{paquete.precio}" />
                             </p:column>
                         
-                             <p:column headerText="Id Transporte">
-                                 <h:outputText value="#{paquete.idtransporte}" />
-                            </p:column>
-                        
-                             <p:column headerText="Id Evento">
-                                 <h:outputText value="#{paquete.idevento}" />
-                            </p:column>
-                        
-                             <p:column headerText="Id Hotel">
-                                 <h:outputText value="#{paquete.idhotel}" />
-                            </p:column>
+                            
                         
                             
                             <f:facet name="footer">
@@ -88,6 +74,10 @@
                                 <p:commandButton value="Eliminar" onclick="PF('cd2').show()"/>
                             </f:facet>
                         
+                        
+                           </p:dataTable>
+                   </h:form>        
+                          
                             <p:confirmDialog 
                         message="Desea Eliminar el paquete"
                         
@@ -99,8 +89,9 @@
                         closeOnEscape="true"
                         
                         >
+                 
                         <h:form>
-                        <p:commandButton value="Si" actionListener="#{paqueteMb.eliminar()}" onclick="PF('cd2').hide()"  update=':form:listadoDeEventos' ajax='true' />
+                        <p:commandButton value="Si" actionListener="#{paqueteMb.eliminar()}" onclick="PF('cd2').hide()"  update=':form:listadoDePaquetes' ajax='true' />
                         <p:commandButton value="No" onclick="PF('cd2').hide()" />
                         
                         
@@ -115,7 +106,87 @@
                               closable="false"
                             closeOnEscape="true">
                                   
+                            <h:form>
+                                <p:panelGrid columns="2">
+                                   <p:outputLabel for="txtCantidad" value="Cantidad:"/>
+                                   <p:inputText id="txtCantidad" size="50" value="#{paqueteMb.paquete.cantidad}"/>
+                                    
+                                <p:outputLabel for="txtOrigen" value="Origen:"/>
+                                <p:inputText id="txtOrigen" size="50" value="#{paqueteMb.paquete.origen}"/> 
+                                
+                                <p:outputLabel for="txtDestino" value="Destino:"/>
+                                <p:inputText id="txtDestino" size="50" value="#{paqueteMb.paquete.destino}"/> 
+                                
+                                <p:outputLabel for="txtFechaInicio" value="Fecha Inicio:"/>
+                                <p:inputText id="txtFechaInicio" size="50" value="#{paqueteMb.paquete.fechainicio}"/> 
+                                
+                                <p:outputLabel for="txtFechaFin" value="FechaFin:"/>
+                                <p:inputText id="txtFechaFin" size="50" value="#{paqueteMb.paquete.fechafin}"/> 
+                                
+                                <p:outputLabel for="txtPrecio" value="Precio:"/>
+                                <p:inputText id="txtPrecio" size="50" value="#{paqueteMb.paquete.precio}"/> 
+                                
+                                <p:selectOneMenu value="#{paqueteMb.transporte.idtransporte}" converter="#{TransporteConverter}" var="t" >
+                                    <f:selectItem itemLabel="Seleccione Uno" itemValue="" />
+                                    <f:selectItems value="#{transporteMb.transportes}" var="transporte" 
+                                                   itemLabel="#{transporte.nombre}" 
+                                                   itemValue="#{transporte}"
+                                                   
+                                                   />
+                                        
+                                    
+                                    <p:column>  #{t.nombre}  </p:column>
+                                    
+                                </p:selectOneMenu>
+                                
+                                
+                                <p:selectOneMenu value="#{paqueteMb.evento.idevento}" converter="#{EventoConverter}" var="e" >
+                                    <f:selectItem itemLabel="Seleccione Uno" itemValue="" />
+                                    <f:selectItems value="#{eventoMb.eventos}" var="evento" 
+                                                   itemLabel="#{evento.descripcion}" 
+                                                   itemValue="#{evento}"
+                                                   
+                                                   />
+                                        
+                                    
+                                    <p:column>  #{e.descripcion}  </p:column>
+                                    
+                                </p:selectOneMenu>
+                                
+                                <p:selectOneMenu value="#{paqueteMb.hotel.idhotel}" converter="#{HotelConverter}" var="h" >
+                                    <f:selectItem itemLabel="Seleccione Uno" itemValue="" />
+                                    <f:selectItems value="#{hotelMb.hoteles}" var="hotel" 
+                                                   itemLabel="#{hotel.nombre}" 
+                                                   itemValue="#{hotel}"
+                                                   
+                                                   />
+                                        
+                                    
+                                    <p:column>  #{h.nombre}  </p:column>
+                                    
+                                </p:selectOneMenu>
+                                   
+                                
+                               <f:facet name="footer">
+                                    <p:growl id="message" showDetail="true" />
+                                    <p:commandButton value="Guardar" 
+                                                     icon="ui-icon-disk" 
+                                                     actionListener="#{paqueteMb.guardar()}"
+                                                     update='message'
+                                                     ajax='True'
+                                                     resetValues="True"
+                                                     onclick="PF('dialog').hide();"
+                                                     />
+                                                        
+                                    <p:commandButton value="Cancelar" icon="ui-icon-close" onclick="PF('dialog').hide();"/>
+                                </f:facet>
                             
+                                </p:panelGrid>
+                                
+                                
+                             
+                                
+                            </h:form>
                             
                             
                             
@@ -123,17 +194,19 @@
                         
                         
                         
-                    </p:dataTable>
                     
                     
                     
                     
                     
-                </h:form>
+                    
+                
                 
                 
                 
             </div>
+                
+               </ui:define>
 
         </ui:composition>
 

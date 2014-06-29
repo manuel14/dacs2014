@@ -28,7 +28,8 @@
             <web-resource-name>Allowed resources</web-resource-name>
             <url-pattern>/javax.faces.resource/*</url-pattern>
             <url-pattern>/resources/*</url-pattern>
-            <url-pattern>/inicio.xhtml</url-pattern>
+            <url-pattern>/index.xhtml</url-pattern>
+            
         </web-resource-collection>
         <!-- No Auth Constraint! -->
     </security-constraint>
@@ -51,6 +52,10 @@
             <role-name>ADMIN</role-name>
         </auth-constraint>
         
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+        
     </security-constraint>
   
     <security-constraint>
@@ -69,12 +74,16 @@
             <role-name>ADMIN</role-name>
             <role-name>USER</role-name>
         </auth-constraint>
+        
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>jdbc-Realm</realm-name>
         <form-login-config>
-            <form-login-page>/inicio.xhtml</form-login-page>
+            <form-login-page>/login.xhtml</form-login-page>
             <form-error-page>/admin/transportesHome.xhtml</form-error-page>
         </form-login-config>
     </login-config>

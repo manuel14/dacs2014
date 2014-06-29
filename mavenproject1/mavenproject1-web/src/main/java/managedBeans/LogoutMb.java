@@ -9,11 +9,9 @@ package managedBeans;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,7 +31,7 @@ public class LogoutMb implements Serializable {
   
       
      public String logout() {
-    String result="/inicio?faces-redirect=true";
+    String result="/index?faces-redirect=true";
     
     FacesContext context = FacesContext.getCurrentInstance();
     HttpServletRequest request = (HttpServletRequest)context.getExternalContext().getRequest();

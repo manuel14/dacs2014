@@ -22,21 +22,7 @@
                 <div id="topRight">
                     <ui:insert name="top">                                    
                         <div id="topLogin" align="center">
-                            <form method="POST" action="j_security_check">
-                                <h:panelGrid columns="2">
-                                  <h:outputLabel for="j_username" value="Username" />
-                                  <p:inputText  id="j_username" required="true" value="" />
-
-                                  <h:outputLabel for="j_password" value="Password" />
-                                  <p:password id="j_password"  required="true" value="" feedback="false"/>
-
-                                  <h:outputText value="" />
-                                  <h:panelGrid columns="2">
-
-                                    <h:commandButton type="submit" value="login" />
-                                  </h:panelGrid>
-                                </h:panelGrid>
-                              </form>
+                            
                         </div>
                     </ui:insert>
                 </div>
@@ -44,7 +30,14 @@
             </div>
             <div id="content">
                 <div id="contentRight">
-                    Para el contenido de la derecha
+                    <h:form>
+                     <h:panelGrid columns="4">
+                        <p:commandButton value="Administración" icon="ui-icon-person" action="admin" ajax="false" />
+                        <p:commandButton value="Acceso Clientes" icon="ui-icon-person" action="clientes" ajax="false" />
+                        
+                    </h:panelGrid>
+                        
+                     </h:form>
                     <ui:insert name="right">Right</ui:insert>
                 </div>
                 <div id="contentCenter">

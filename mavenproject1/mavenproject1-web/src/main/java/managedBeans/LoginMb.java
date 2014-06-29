@@ -9,17 +9,18 @@
  import java.io.Serializable;
  import java.util.logging.Logger;
  import javax.enterprise.context.SessionScoped;
+ import javax.faces.bean.ManagedBean;
  import javax.faces.context.ExternalContext;
- import javax.faces.context.FacesContext;
- import javax.inject.Named;
- import javax.servlet.http.HttpServletRequest;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
  
  /**
   *
   * @author Admin
   */
- @Named
+ 
  @SessionScoped
+ @ManagedBean (name="loginMb")
  public class LoginMb implements Serializable {
  
      /**
@@ -59,12 +60,12 @@
              logger.info("Verificando si es Admin");
             
             if (request.isUserInRole("ADMIN"))
-                return "/admin/home";
+                return "admin";
             
              logger.info("Verificando si es Cliente");
  
              if (request.isUserInRole("USER"))
-                return "irACliente";
+                return "user";
             
             logger.info("FRACASOOO");
             return "fracaso";

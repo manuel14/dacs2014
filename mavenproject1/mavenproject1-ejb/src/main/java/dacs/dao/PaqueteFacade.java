@@ -32,6 +32,8 @@ public class PaqueteFacade extends AbstractFacade<Paquete> {
     public PaqueteFacade(){
         super(Paquete.class);
     }
+    
+    
     public List<Paquete> ListarPaquetes(){
         //javax.persistence.Query p = getEntityManager().createQuery("select p from Paquete");
         //List<Paquete> paquetes =  p.getResultList();

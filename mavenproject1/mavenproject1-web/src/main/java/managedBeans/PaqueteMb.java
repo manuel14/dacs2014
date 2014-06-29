@@ -6,8 +6,12 @@
 
 package managedBeans;
 
+import com.sun.jmx.mbeanserver.Util;
 import dacs.dao.PaqueteFacade;
+import dacs.models.Evento;
+import dacs.models.Hotel;
 import dacs.models.Paquete;
+import dacs.models.Transporte;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -30,8 +34,54 @@ public class PaqueteMb implements Serializable{
     
     @EJB
     private PaqueteFacade paquetefacade;
+    private Transporte transporte = new Transporte();
+    private Evento evento = new Evento();
+    private Hotel hotel = new Hotel();
     private Paquete paquete = new Paquete();
     private List<Paquete> paquetes = null;
+
+   
+
+    
+    
+    
+
+    public PaqueteFacade getPaquetefacade() {
+        return paquetefacade;
+    }
+
+    public void setPaquetefacade(PaqueteFacade paquetefacade) {
+        this.paquetefacade = paquetefacade;
+    }
+
+    public Transporte getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(Transporte transporte) {
+        this.transporte = transporte;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
+   
+    
+    
+    
     public PaqueteMb() {
         super();
     }
@@ -69,11 +119,15 @@ public class PaqueteMb implements Serializable{
     public void guardar() {
         try {
             if(this.paquete.getIdpaquete()!=null){
+                
+                
                 paquetefacade.edit(this.paquete);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paquete modificado exitosamente!"));
             }
             else{
-
+             this.paquete.setIdevento(evento);
+             this.paquete.setIdhotel(hotel);
+             this.paquete.setIdtransporte(transporte);
             paquetefacade.create(this.paquete);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paquete creado exitosamente!"));
             }
