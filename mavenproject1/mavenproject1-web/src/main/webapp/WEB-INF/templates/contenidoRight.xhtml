@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <div id="Righ">
+            <div  align="center">
+                <h:form >
+                    <p:panelGrid columns="2" style="margin-top:20px; width:100%; alignment-adjust:central  ">
+                        <f:facet name="header">
+                            <p:column colspan="2">Buscador</p:column> 
+                             
+                        </f:facet>
+                        
+                        <p:row>
+                            <p:column colspan="2">
+                                <p:selectOneMenu id="lstTipo">
+                                    <f:selectItem itemLabel="Seleccionar uno" itemValue=""/>
+                                    <f:selectItem itemLabel="Nombre" itemValue="NombreP"/>
+                                    <f:selectItem itemLabel="FechaInicio" itemValue="FechaInicioP"/>
+                                </p:selectOneMenu><br/>
+                                <p:inputText id="txtBusca" size="30"/> 
+                            </p:column>
+                         </p:row>
+                        
+                        <f:facet name="footer">
+                            <div align="center">
+                                <p:commandButton id="btnBuscar" value="Buscar" onclick="PF('mensaje').hide()" />
+                            </div>                  
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </div>
+            <div>
+                <h:form>
+                <p:imageSwitch effect="fade" id="fadeEffect">
+                    <ui:repeat value="#{ImagenesMb.images}" var="image" id="fadeEffectImages">
+                        <p:graphicImage name="./images/#{image}" id="image" />
+                    </ui:repeat>
+                </p:imageSwitch>
+                </h:form>
+            </div>
+            <div align="center">
+            <h:form>
+                <p:panelGrid columns="1" style="margin-top:20px ">
+                    <f:facet name="header">
+                        Suscripción
+                    </f:facet>
+                         <p:inputText id="txtEmailCons" size="30" value="Correo electrónico"/>
+                    <f:facet name="footer">
+                        <div align="center">
+                            <p:commandButton id="btnSuscrib" value="Suscríbete" onclick="PF('mensaje').show()" />
+                        </div>
+                        
+                    </f:facet>
+                </p:panelGrid>
+                                             
+            </h:form>
+            <p:confirmDialog  message="Gracias por suscribirte" header="Suscripción"    
+                widgetVar="mensaje" closeOnEscape="true"  >
+                    <div align="center">
+                           <p:commandButton value="Aceptar" onclick="PF('mensaje').hide()" />
+                    </div>
+            </p:confirmDialog>
+            </div>
+            
+                              
+        </div>
+          
+    </h:body>
+</html>
+

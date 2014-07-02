@@ -3,17 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <link href="./images/favicon.ico" rel="shortcut icon" />
+        <title>Fantastic Tour</title>
+        
     </h:head>
 
     <h:body>
+       <div id="superContent" aling="center">
         <div id="contentGeneral">
             <div id="top">
                 <div id="topLeft">
@@ -30,6 +32,7 @@
             </div>
             <div id="content">
                 <div id="contentRight">
+<<<<<<< HEAD
                     <h:form>
                      <h:panelGrid columns="4">
                         <p:commandButton value="Administración" icon="ui-icon-person" action="admin" ajax="false" />
@@ -39,19 +42,17 @@
                         
                      </h:form>
                     <ui:insert name="right">Right</ui:insert>
+=======
+                   
+                   <ui:include src="/WEB-INF/templates/contenidoRight.xhtml"/>
+>>>>>>> 2d68fba7bebb13116eb3683d19076a56e39ccea6
                 </div>
                 <div id="contentCenter">
-                    <p>
-                        Somos una empresa dedicada al turismo internacional que brinda servicios turisticos desde el 2003.<br/>
-                        Ofrecemos una amplia variedad de paquetes turisticos que incluyen alojamiento, excursiones, pasajes aereos o terrestres, seguros medicos, asi también traslados por los destinos elegidos, entre otros servicios.<br/>
-                        Contamos con personal calificado y con probada experiencia para atender todos los requerimientos de cada uno de los diferentes viajes.<br/>
-                        Brindamos la oportunidad de realizar reservas a través de nuestra página y además ofrecemos distintos medios de pagos. <br/>
-                        Para más información puede comunicarse con nosotros a través de los distintos medios de comunicación que brindamos en la sección de Contacto.<br/>
-                    </p>
-                    <ui:insert name="content">Content</ui:insert>
+                   <ui:insert name="content">Content</ui:insert>
                 </div>
             </div>
             <ui:include src="/WEB-INF/templates/contenidoBottom.xhtml"/>
+        </div>
         </div>
     </h:body>
 

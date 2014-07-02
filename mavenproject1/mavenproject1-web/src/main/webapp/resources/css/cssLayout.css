@@ -1,12 +1,17 @@
-#contentGeneral{
-    width: 100%;
-    margin: 0 auto;
+superContent{
+   width: 980px;
+   margin: 0 auto;
+   
 }
+#contentGeneral{
+    width: 75%;
+    margin: 0 auto;
+    }
 #top {
-    background-color: #036fab;
+    background-color: #E6AC2F;
     color: white;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
+    padding: 15px 5px 5px 5px;
+    margin: 0 auto;
     clear: both;
     overflow: hidden;
 }
@@ -14,16 +19,24 @@
 #topLeft{
     position: relative;
     float: left;
-    background-color: #FF6347;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
-    width: 73%;
+    background-color: #ffffff;
+    background-image: url(./fondoTop.png);
+    padding: 10px;
+    margin: 5px;
+    width: 70%;
+    border:0px;
+}
+#logoBrasil{
+    position:relative;
+    float:right;
+    margin-right: 20px;
 }
 
 #topRight{
+    
     position: relative;
     float: right;
-    background-color: #F0E68C;
+    background-color: #E6AC2F;
     padding: 5px;
     margin: 0px 0px 10px 0px;
     width: 25%;
@@ -31,15 +44,15 @@
 
 #topRightCuenta{
     position: relative;
-    background-color: #00FF00;
+    background-color: #E6AC2F;
     padding: 5px;
-    margin: 0px 0px 10px 0px;
+    margin: 10px 0px 10px 0px;
     clear: both;
 }
 
 #topBarraDeNavegacion{
     position: relative;
-    background-color: #00FF00;
+    background-color: #E6AC2F;
     padding: 5px;
     margin: 0px 0px 10px 0px;
     clear: both;
@@ -47,21 +60,21 @@
 
 #topLogin{
     position: relative;
-    background-color: #FF0000;
+    background-color: #E6AC2F;
     padding: 5px;
     margin: 0px 0px 10px 0px;
 }
 
 #topLogo{
     position: relative;
-    background-color: #00FF00;
+    background-color: #ffffff;
     padding: 5px;
     margin: 0px 0px 10px 0px;
     clear: both;
 }
 
 #content{
-    background-color: #7FFF00;
+    background-color:#437188;
     padding: 5px;
     margin: 0px 0px 10px 0px;
     clear: both;
@@ -71,9 +84,9 @@
 #contentRight{
     position: relative;
     float: right;
-    background-color: #DA70D6;
+    background-color: #437188;
     padding: 5px;
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
     width: 25%;
     overflow: hidden;
 }
@@ -81,10 +94,10 @@
 #contentCenter{
     position: relative;
     float: left;
-    background-color: #FFE4E1;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
-    width: 73%;
+    background-color: #FCEE84;
+    padding: 10px;
+    margin: 5px;
+    width: 70%;
     overflow: hidden;
 }
 
@@ -99,7 +112,7 @@
 }
 
 #bottom {
-    background-color: #c2dfef;
+    background-color: #E6AC2F;
     padding: 5px;
     margin: 10px 0px 0px 0px;
     clear: both;

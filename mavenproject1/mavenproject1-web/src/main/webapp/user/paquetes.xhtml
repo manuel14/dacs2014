@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:body>
+       <ui:composition template="/WEB-INF/templates/plantillaCliente.xhtml">
+             
+            <ui:define name="content">
+                <h1>Paquetes</h1>
+                <div id='contentPanel'>
+                    <h:form>
+                        <p:dataList id="listadoPaquetes" var="paquete" value="#{paqueteMb.paquetes}">    
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:panel id="panelPaquete" header="#{paquete.nombre}" toggleable="true" closable="true" toggleSpeed="250" closeSpeed="250" widgetVar="panel" style="margin-bottom:20px">
+                            <p:ajax event="close"  update="msgs" />
+                            <p:ajax event="toggle"  update="msgs" />
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage name="/resources/images/BeloHorizonte.jpg" />
+                                <h:outputText value="Descripcion" />
+                            </h:panelGrid>
+ 
+                            <f:facet name="options">
+                             <p:menu>
+                                <p:submenu label="Settings">
+                                    <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
+                                    <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
+                                </p:submenu>
+                            </p:menu>
+                        </f:facet>
+                        </p:panel>
+                    </p:dataList>
+                    </h:form>
+                 </div>
+            </ui:define>
+           
+            
+        </ui:composition>
+
+    </h:body>
+</html>

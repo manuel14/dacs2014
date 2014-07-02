@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Fantastic Tour-Usuarios</title>
+    </h:head>
+
+    <h:body>
+        <div id="superContent">
+        <div id="contentGeneral">
+            <div id="top">
+                <div id="topLeft">
+                    <ui:include src="/WEB-INF/templates/contenidoTopLeft.xhtml"/>
+                    
+                </div>              
+                <div id="topRight">
+                    <h:form>
+                        <div id="topRightCuenta" align="center">
+                            <p:outputLabel value="Bienvenido usuario"/>
+                            <br/>
+                            <p:commandButton value="Cerrar Sesión" action="user/index?faces-redirect=true" ajax="false"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div id="content">
+                <div id="contentRight">
+                    <ui:include src="/WEB-INF/templates/contenidoRight.xhtml"/>
+                </div>
+                <div id="contentCenter" align="center">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+                
+            </div>
+            <ui:include src="/WEB-INF/templates/contenidoBottom.xhtml"/>
+        </div>
+        </div>
+    </h:body>
+
+</html>
