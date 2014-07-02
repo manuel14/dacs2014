@@ -32,7 +32,41 @@
             </div>
             <div id="content">
                 <div id="contentRight">
-<<<<<<< HEAD
+    </h:head>
+
+    <h:body>
+       <div id="superContent" aling="center">
+        <div id="contentGeneral">
+            <div id="top">
+                <div id="topLeft">
+                    <ui:include src="/WEB-INF/templates/contenidoTopLeft.xhtml"/>
+                </div>               
+                <div id="topRight">
+                    <ui:insert name="top">                                    
+                        <div id="topLogin" align="center">
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </ui:insert>
+                </div>
+
+            </div>
+            <div id="content">
+                <div id="contentRight">
+
                     <h:form>
                      <h:panelGrid columns="4">
                         <p:commandButton value="Administración" icon="ui-icon-person" action="admin" ajax="false" />
@@ -45,7 +79,8 @@
 =======
                    
                    <ui:include src="/WEB-INF/templates/contenidoRight.xhtml"/>
->>>>>>> 2d68fba7bebb13116eb3683d19076a56e39ccea6
+                   
+                   <ui:include src="/WEB-INF/templates/contenidoRight.xhtml"/>
                 </div>
                 <div id="contentCenter">
                    <ui:insert name="content">Content</ui:insert>
