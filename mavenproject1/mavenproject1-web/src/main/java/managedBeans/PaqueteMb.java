@@ -6,7 +6,6 @@
 
 package managedBeans;
 
-import com.sun.jmx.mbeanserver.Util;
 import dacs.dao.PaqueteFacade;
 import dacs.models.Evento;
 import dacs.models.Hotel;
@@ -34,12 +33,12 @@ public class PaqueteMb implements Serializable{
     
     @EJB
     private PaqueteFacade paquetefacade;
-    private Transporte transporte = new Transporte();
-    private Evento evento = new Evento();
-    private Hotel hotel = new Hotel();
+    private Transporte transporte;
+    private Evento evento;
+    private Hotel hotel;
     private Paquete paquete = new Paquete();
     private List<Paquete> paquetes = null;
-
+  
    
 
     
@@ -118,20 +117,21 @@ public class PaqueteMb implements Serializable{
 
     public void guardar() {
         try {
+            
             if(this.paquete.getIdpaquete()!=null){
-                
+                System.out.println("editar");
                 
                 paquetefacade.edit(this.paquete);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paquete modificado exitosamente!"));
             }
             else{
-             this.paquete.setIdevento(evento);
-             this.paquete.setIdhotel(hotel);
-             this.paquete.setIdtransporte(transporte);
+                System.out.println("guardar");
+             
             paquetefacade.create(this.paquete);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paquete creado exitosamente!"));
             }
         } catch (Exception e) {
+            System.out.println("no guarda");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Crear:", e.getMessage()));
             System.out.println(e.getMessage());
         }

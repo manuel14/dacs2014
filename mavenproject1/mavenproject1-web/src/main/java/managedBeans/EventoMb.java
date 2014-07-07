@@ -8,7 +8,6 @@ package managedBeans;
 
 import dacs.dao.EventoFacade;
 import dacs.models.Evento;
-import dacs.models.Transporte;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;

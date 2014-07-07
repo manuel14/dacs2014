@@ -13,6 +13,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(name = "paquete" , schema = "test")
+@Table(name = "paquete" ,schema="test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Paquete.findAll", query = "SELECT p FROM Paquete p"),
@@ -64,13 +65,9 @@ public class Paquete implements Serializable {
     @Size(max = 50)
     @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "fechainicio")
     @Temporal(TemporalType.DATE)
     private Date fechainicio;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "fechafin")
     @Temporal(TemporalType.DATE)
     private Date fechafin;
@@ -87,7 +84,7 @@ public class Paquete implements Serializable {
     @JoinColumn(name = "idevento", referencedColumnName = "idevento")
     @ManyToOne(optional = false)
     private Evento idevento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpaquete")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "idpaquete" )
     private Collection<ReservaPaquete> reservaPaqueteCollection;
 
     public Paquete() {
@@ -97,12 +94,21 @@ public class Paquete implements Serializable {
         this.idpaquete = idpaquete;
     }
 
-    public Paquete(Integer idpaquete, Date fechainicio, Date fechafin, float precio) {
+    public Paquete(Integer idpaquete, Integer cantidad, String origen, String destino, String nombre, Date fechainicio, Date fechafin, float precio, Transporte idtransporte, Hotel idhotel, Collection<ReservaPaquete> reservaPaqueteCollection) {
         this.idpaquete = idpaquete;
+        this.cantidad = cantidad;
+        this.origen = origen;
+        this.destino = destino;
+        this.nombre = nombre;
         this.fechainicio = fechainicio;
         this.fechafin = fechafin;
         this.precio = precio;
+        this.idtransporte = idtransporte;
+        this.idhotel = idhotel;
+        this.reservaPaqueteCollection = reservaPaqueteCollection;
     }
+
+   
 
     public Integer getIdpaquete() {
         return idpaquete;

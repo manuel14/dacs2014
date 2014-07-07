@@ -22,7 +22,9 @@
                             
                         </f:facet>
                         
-                      
+                        <p:ajax event="rowSelect" update=":form1:panel1" />
+                        
+                        <p:ajax event="rowEdit" listener="#{paqueteMb.guardar()}" />
                             
                           
                             
@@ -30,10 +32,7 @@
                                 
                                 
                             
-                            <p:column headerText="Id">
-                                <h:outputText value="#{paquete.idpaquete}" />
-
-                            </p:column>
+                            
                         
                             <p:column headerText="Cantidad">
                                 <h:outputText value="#{paquete.cantidad}" />
@@ -106,8 +105,8 @@
                               closable="false"
                             closeOnEscape="true">
                                   
-                            <h:form>
-                                <p:panelGrid columns="2">
+                            <h:form id="form1">
+                                <p:panelGrid columns="2" id="panel1">
                                    <p:outputLabel for="txtCantidad" value="Cantidad:"/>
                                    <p:inputText id="txtCantidad" size="50" value="#{paqueteMb.paquete.cantidad}"/>
                                     
@@ -117,17 +116,20 @@
                                 <p:outputLabel for="txtDestino" value="Destino:"/>
                                 <p:inputText id="txtDestino" size="50" value="#{paqueteMb.paquete.destino}"/> 
                                 
-                                <p:outputLabel for="txtFechaInicio" value="Fecha Inicio:"/>
-                                <p:inputText id="txtFechaInicio" size="50" value="#{paqueteMb.paquete.fechainicio}"/> 
+                                <p:outputLabel for="txtNombre" value="Nombre:"/>
+                                <p:inputText id="txtNombre" size="50" value="#{paqueteMb.paquete.nombre}"/> 
                                 
-                                <p:outputLabel for="txtFechaFin" value="FechaFin:"/>
-                                <p:inputText id="txtFechaFin" size="50" value="#{paqueteMb.paquete.fechafin}"/> 
+                                <p:outputLabel for="txtFechaInicio" value="Fecha Inicio:"/>
+                                <p:calendar id="txtFechaInicio" mode="inline" value="#{paqueteMb.paquete.fechainicio}" />
+                                
+                                <p:outputLabel for="txtFechaFin" value="Fecha Fin:"/>
+                                <p:calendar id="txtFechaFin"  mode="inline" value="#{paqueteMb.paquete.fechafin}" />
                                 
                                 <p:outputLabel for="txtPrecio" value="Precio:"/>
                                 <p:inputText id="txtPrecio" size="50" value="#{paqueteMb.paquete.precio}"/> 
                                 
-                                <p:selectOneMenu value="#{paqueteMb.transporte.idtransporte}" converter="#{TransporteConverter}" var="t" >
-                                    <f:selectItem itemLabel="Seleccione Uno" itemValue="" />
+                                <p:selectOneMenu value="#{paqueteMb.paquete.idtransporte}"  converter="transporteConverter" var="t" filter="true" filterMatchMode="startsWith" >
+                                    
                                     <f:selectItems value="#{transporteMb.transportes}" var="transporte" 
                                                    itemLabel="#{transporte.nombre}" 
                                                    itemValue="#{transporte}"
@@ -140,8 +142,8 @@
                                 </p:selectOneMenu>
                                 
                                 
-                                <p:selectOneMenu value="#{paqueteMb.evento.idevento}" converter="#{EventoConverter}" var="e" >
-                                    <f:selectItem itemLabel="Seleccione Uno" itemValue="" />
+                                <p:selectOneMenu value="#{paqueteMb.paquete.idevento}" converter="eventoConverter" var="e" filter="true" filterMatchMode="startsWith" >
+                                    
                                     <f:selectItems value="#{eventoMb.eventos}" var="evento" 
                                                    itemLabel="#{evento.descripcion}" 
                                                    itemValue="#{evento}"
@@ -153,8 +155,8 @@
                                     
                                 </p:selectOneMenu>
                                 
-                                <p:selectOneMenu value="#{paqueteMb.hotel.idhotel}" converter="#{HotelConverter}" var="h" >
-                                    <f:selectItem itemLabel="Seleccione Uno" itemValue="" />
+                                <p:selectOneMenu value="#{paqueteMb.paquete.idhotel}" converter="hotelConverter" var="h" filter="true" filterMatchMode="startsWith" >
+                                    
                                     <f:selectItems value="#{hotelMb.hoteles}" var="hotel" 
                                                    itemLabel="#{hotel.nombre}" 
                                                    itemValue="#{hotel}"
@@ -171,9 +173,9 @@
                                     <p:growl id="message" showDetail="true" />
                                     <p:commandButton value="Guardar" 
                                                      icon="ui-icon-disk" 
-                                                     actionListener="#{paqueteMb.guardar()}"
-                                                     update='message'
-                                                     ajax='True'
+                                                     action="#{paqueteMb.guardar()}"
+                                                     update=':form:listadoDePaquetes'
+                                                     
                                                      resetValues="True"
                                                      onclick="PF('dialog').hide();"
                                                      />

@@ -1,8 +1,13 @@
 C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\webservices\validarTarjeta.java
 C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\TransporteMb.java
-C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\PaqueteMb.java
+C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\ImagenesMb.java
 C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\webservices\obtenerPaquetes.java
 C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\LoginMb.java
+C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\Converters\EventoConverter.java
 C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\EventoMb.java
-C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\HotelMb.java
+C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\Converters\HotelConverter.java
+C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\LogoutMb.java
+C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\PaqueteMb.java
+C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\Converters\TransporteConverter.java
 C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\ClienteMb.java
+C:\Users\Administrator\Documents\NetBeansProjects\dacs2014\mavenproject1\mavenproject1-web\src\main\java\managedBeans\HotelMb.java

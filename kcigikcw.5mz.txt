@@ -1,0 +1,34 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/Administrador.java
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/Cliente.java
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/Evento.java
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/FormadePagoReserva.java
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/Hotel.java
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/Paquete.java
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/ReservaPaquete.java
+#	modified:   mavenproject1/mavenproject1-ejb/src/main/java/dacs/models/Transporte.java
+#	modified:   mavenproject1/mavenproject1-web/faces-config.NavData
+#	modified:   mavenproject1/mavenproject1-web/src/main/java/Converters/EventoConverter.java
+#	modified:   mavenproject1/mavenproject1-web/src/main/java/managedBeans/EventoMb.java
+#	modified:   mavenproject1/mavenproject1-web/src/main/java/managedBeans/PaqueteMb.java
+#	modified:   mavenproject1/mavenproject1-web/src/main/webapp/WEB-INF/faces-config.xml
+#	modified:   mavenproject1/mavenproject1-web/src/main/webapp/WEB-INF/templates/plantillaPrincipal.xhtml
+#	modified:   mavenproject1/mavenproject1-web/src/main/webapp/WEB-INF/web.xml
+#	modified:   mavenproject1/mavenproject1-web/src/main/webapp/admin/paquetesTuristicosHome.xhtml
+#	modified:   mavenproject1/mavenproject1-web/src/main/webapp/admin/transportesHome.xhtml
+#	modified:   mavenproject1/mavenproject1-web/src/main/webapp/login.xhtml
+#	modified:   mavenproject1/mavenproject1-web/src/main/webapp/user/index2.xhtml
+#	modified:   mavenproject1/mavenproject1-web/target/maven-archiver/pom.properties
+#	modified:   mavenproject1/mavenproject1-web/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+#	modified:   mavenproject1/mavenproject1-web/target/mavenproject1-web-1.0-SNAPSHOT.war
+#
+

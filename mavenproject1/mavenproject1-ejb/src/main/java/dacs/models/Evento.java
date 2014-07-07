@@ -13,6 +13,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(name = "evento" , schema = "test")
+@Table(name = "evento" ,schema="test")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Evento.findAll", query = "SELECT e FROM Evento e"),
@@ -55,7 +56,7 @@ public class Evento implements Serializable {
     @Column(name = "horario")
     @Temporal(TemporalType.TIME)
     private Date horario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idevento")
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "idevento" ,fetch = FetchType.LAZY)
     private Collection<Paquete> paqueteCollection;
 
     public Evento() {

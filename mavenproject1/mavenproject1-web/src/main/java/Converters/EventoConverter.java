@@ -19,7 +19,7 @@ import javax.faces.convert.FacesConverter;
  * @author Administrator
  */
 
-@FacesConverter(value = "EventoConverter", forClass = Evento.class)
+@FacesConverter(value = "eventoConverter", forClass = Evento.class)
 public class EventoConverter implements Converter{
     @EJB
     private EventoFacade EventoFacade;

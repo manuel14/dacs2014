@@ -2,7 +2,7 @@
 <faces-config version="2.2"
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -22,7 +22,7 @@
         </navigation-case>
         <navigation-rule>
         <navigation-case>
-            <from-outcome>login?faces-redirect=true</from-outcome>
+            <from-outcome>index?faces-redirect=true</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
             <redirect>1</redirect>
         </navigation-case>

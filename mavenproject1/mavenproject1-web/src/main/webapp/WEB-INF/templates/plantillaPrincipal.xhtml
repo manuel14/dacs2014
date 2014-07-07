@@ -28,7 +28,15 @@
                         <div id="topLogin" align="center">
                             
 
-
+                    <h:form>
+                     <h:panelGrid columns="4">
+                        <p:commandButton value="Administración" icon="ui-icon-person" action="admin" ajax="false" />
+                        
+                        <p:commandButton value="Acceso Clientes" icon="ui-icon-person" action="clientes" ajax="false" />
+                        
+                    </h:panelGrid>
+                        
+                    </h:form>
 
 
 
@@ -49,20 +57,13 @@
             <div id="content">
                 <div id="contentRight">
 
-                    <h:form>
-                     <h:panelGrid columns="4">
-                        <p:commandButton value="Administración" icon="ui-icon-person" action="admin" ajax="false" />
-                        <p:commandButton value="Acceso Clientes" icon="ui-icon-person" action="clientes" ajax="false" />
-                        
-                    </h:panelGrid>
-                        
-                     </h:form>
-                    <ui:insert name="right">Right</ui:insert>
-=======
+                  
+                    <ui:insert name="right"></ui:insert>
+
                    
                    <ui:include src="/WEB-INF/templates/contenidoRight.xhtml"/>
                    
-                   <ui:include src="/WEB-INF/templates/contenidoRight.xhtml"/>
+                   
                 </div>
                 <div id="contentCenter">
                    <ui:insert name="content">Content</ui:insert>
