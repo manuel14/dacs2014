@@ -22,7 +22,7 @@ public class validarTarjeta {
      * This is a sample web service operation
      */
     @WebMethod(operationName = "validar")
-     public boolean isValidCardNumber(String nroTarjeta){
+     public boolean isValidCardNumber(@WebParam String nroTarjeta){
 
         try {
             nroTarjeta = nroTarjeta.replaceAll("\\D", "");

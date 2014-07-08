@@ -25,7 +25,7 @@
                         <div id="topRightCuenta" align="center">
                             <p:outputLabel value="Bienvenido usuario"/>
                             <br/>
-                            <p:commandButton value="Cerrar Sesión" action="user/index?faces-redirect=true" ajax="false"/>
+                            <p:commandButton value="Cerrar Sesión" action="#{logoutMb.logout()}" ajax="false"/>
                         </div>
                     </h:form>
                 </div>

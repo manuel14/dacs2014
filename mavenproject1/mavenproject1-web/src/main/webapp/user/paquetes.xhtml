@@ -6,39 +6,101 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <h:body>
-       <ui:composition template="/WEB-INF/templates/plantillaCliente.xhtml">
+     <ui:composition template="/WEB-INF/templates/plantillaCliente.xhtml">
              
             <ui:define name="content">
-                <h1>Paquetes</h1>
-                <div id='contentPanel'>
-                    <h:form>
-                        <p:dataList id="listadoPaquetes" var="paquete" value="#{paqueteMb.paquetes}">    
-                        <p:growl id="msgs" showDetail="true" />
-                        <p:panel id="panelPaquete" header="#{paquete.nombre}" toggleable="true" closable="true" toggleSpeed="250" closeSpeed="250" widgetVar="panel" style="margin-bottom:20px">
-                            <p:ajax event="close"  update="msgs" />
-                            <p:ajax event="toggle"  update="msgs" />
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage name="/resources/images/BeloHorizonte.jpg" />
-                                <h:outputText value="Descripcion" />
-                            </h:panelGrid>
- 
-                            <f:facet name="options">
-                             <p:menu>
-                                <p:submenu label="Settings">
-                                    <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
-                                    <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
-                                </p:submenu>
-                            </p:menu>
-                        </f:facet>
-                        </p:panel>
-                    </p:dataList>
-                    </h:form>
-                 </div>
+                
+              <h:form id="formPaquete">    
+               
+                <h:panelGrid id="panelBuscar" columns="2" style="margin-top: 0px" >
+                                       
+                    <p:inputText id="nombre" value="#{paqueteMb.nombre}" size="30" required="true" placeholder="Ingrese una ciudad"/>
+                             
+                    <p:commandButton id="btnBuscar" value="Buscar" icon="ui-icon-search" 
+                                     action="#{paqueteMb.doBuscarPaquetes()}" update="paquetesList" process="panelBuscar"/>
+                 
+                </h:panelGrid>
+               
+                <p:dataGrid id="paquetesList" value="#{paqueteMb.paquetes}" var="paq" columns="1"
+                                rows="2" paginator="true" paginatorPosition="bottom">
+                          <p:panel header="#{paq.nombre}" toggleable="true" toggleOrientation="horizontal">
+                                <p:panelGrid columns="2">
+                                    <p:column>
+                                        <p:row>
+                                            <p:graphicImage name="./images/#{paq.nombre}.jpg" height="200px" width="250px" />
+                                        </p:row>
+                                    </p:column>
+                                    <p:column>
+                                        <p:row>
+                                            <h:outputText value="Fecha de salida: #{paq.fechainicio} ">
+                                                <f:convertDateTime type="date" dateStyle="short" locale="es_AR" timeZone="America/Buenos_Aires"/>
+                                            </h:outputText>
+                                        </p:row>
+                                        <p:separator />
+                                        <p:row>
+                                            <h:outputText value="Precio $: #{paq.precio}"/>
+                                            
+                                        </p:row>
+                                        <p:separator/>
+                                        <p:row>
+                                            <p:commandButton value="Reservar" type="button" onclick="PF('dialog').show();" />
+                                        </p:row>
+                                    </p:column>  
+                                </p:panelGrid>
+                              
+                              
+                                 <p:dialog header="Reserva de paquete" 
+                                            widgetVar="dialog" 
+                                            modal="true" 
+                                            resizable="false" 
+                                            closable="false"
+                                            closeOnEscape="true">
+                             
+                                     <p:panelGrid id="panelReserva" columns="2">
+                                              <p:outputLabel  for="paqNombre" value="Paquete:" />
+                                              <h:inputText id="paqNombre" value="#{paq.nombre}" /> 
+                                              <p:outputLabel for="paqCantidad" value="Cantidad:"/>
+                                              <p:spinner id="paqCantidad" min="1" max="20" 
+                                                        value="1" />
+                                              <p:outputLabel for="paqPrecio" value="Precio $"/>
+                                              <h:inputText id="paqPrecio" value="#{paq.precio}" />
+                                              
+                                              <p:outputLabel for="paqTarjeta" value="NÂ° Tarjeta:"/>
+                                              <h:inputText id="paqTarjeta"  size="30" value=""/>
+                                              
+                                              <p:outputLabel for="paqTotal" value="Total $"/>
+                                              <h:outputText id="paqTotal" value="" />
+
+                                            <f:facet name="footer">
+                                                <p:growl id="message1" showDetail="true" />
+                                                <p:commandButton value="Enviar" 
+                                                      
+                                                     actionListener="#{paqueteMb.reservarPaquete()}"
+                                                     update='message1'
+                                                     ajax="true"
+                                                     resetValues="True"
+                                                     process="panelReserva"
+                                                     onclick="PF('dialog').hide();"
+                                                     />
+                                                        
+                                                <p:commandButton value="Cancelar" icon="ui-icon-close" onclick="PF('dialog').hide();"/>
+                                            </f:facet>
+                                        </p:panelGrid>
+                                 </p:dialog>  
+                                 
+                    </p:panel>
+                    
+  
+                    </p:dataGrid>
+              
+                  
+
+                    
+                   </h:form>
             </ui:define>
            
             
         </ui:composition>
 
-    </h:body>
+    
 </html>

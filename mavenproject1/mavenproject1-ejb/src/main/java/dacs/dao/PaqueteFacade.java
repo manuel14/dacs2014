@@ -49,5 +49,16 @@ public class PaqueteFacade extends AbstractFacade<Paquete> {
               
         return pq.getResultList();
     }
+    public List<Paquete> ListarPaquetesPorNombre(String nombre){
+            CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+            CriteriaQuery<Paquete> q = builder.createQuery(Paquete.class);
+            Root<Paquete> root = q.from(Paquete.class);
+            q.where(builder.like(builder.lower(root.<String>get("nombre")), builder.parameter(String.class,"nombre")));
+            TypedQuery<Paquete> pq =em.createQuery(q);
+            pq.setParameter("nombre","%"+nombre.toLowerCase()+"%");
+            return pq.getResultList();
+       
+   }
+    
 
   }

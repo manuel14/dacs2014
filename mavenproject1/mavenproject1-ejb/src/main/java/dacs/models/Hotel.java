@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrator
  */
 @Entity
-@Table(name = "hotel" ,schema="test")
+@Table(name = "hotel")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Hotel.findAll", query = "SELECT h FROM Hotel h"),
@@ -53,7 +52,7 @@ public class Hotel implements Serializable {
     @Size(max = 50)
     @Column(name = "ciudad")
     private String ciudad;
-    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "idhotel" ,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idhotel")
     private Collection<Paquete> paqueteCollection;
 
     public Hotel() {

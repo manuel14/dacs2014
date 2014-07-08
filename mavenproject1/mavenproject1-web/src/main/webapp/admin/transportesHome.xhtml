@@ -15,7 +15,7 @@
                 <h1 align="left">Esta es la página de administración de transportes</h1>
                 <div id="contentCenterTabla">
                     <h:form id="form">
-                        <p:dataTable  id="listadoDeTransportes"  var="transporte" selectionMode="single" selection="#{transporteMb.transporte}" rowKey="#{transporte.idtransporte}" value="#{transporteMb.transportes}" >
+                        <p:dataTable  id="listadoDeTransportes"   var="transporte" selectionMode="single" selection="#{transporteMb.transporte}" rowKey="#{transporte.idtransporte}" value="#{transporteMb.transportes}" >
                             <f:facet name="header">
                                 Listado de Transportes
                             </f:facet>
@@ -25,9 +25,7 @@
                                 
                             </p:ajax>
                             
-                            <p:ajax event="rowEdit"  update="listadoDeTransportes" process=":form:listadoDeTransportes"    listener="#{transporteMb.guardar()}" >
-                                
-                            </p:ajax>
+                            
                             
                            
                             
@@ -75,7 +73,7 @@
                         
                         >
                         <h:form>
-                            <p:commandButton value="Si" update=":form:listadoDeTransportes"  action="#{transporteMb.eliminar()}" onclick="PF('cd2').hide()"   />
+                            <p:commandButton value="Si"  update=":form:listadoDeTransportes"  action="#{transporteMb.eliminar()}" onclick="PF('cd2').hide()"   />
                         <p:commandButton value="No" onclick="PF('cd2').hide()" />
                         
                         
@@ -114,8 +112,9 @@
                                     <p:commandButton value="Guardar" 
                                                      icon="ui-icon-disk" 
                                                      action="#{transporteMb.guardar()}"
-                                                     update='message'
-                                                     ajax='true'
+                                                     update=':form:listadoDeTransportes'
+                                                     
+                                                     
                                                      
                                                      
                                                      onclick="PF('dialog').hide();"
@@ -141,7 +140,7 @@
                         <h:form id="form2" >
                             <p:panelGrid id="panel2" columns="2">
                                 <f:facet name="header">
-                                    Editando transporte
+                                    
                                 </f:facet>
                                 <p:outputLabel for="txtNombre" value="Nombre:"/>
                                 <p:inputText id="txtNombre" size="50" value="#{transporteMb.transporte.nombre}"/>

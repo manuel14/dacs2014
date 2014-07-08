@@ -14,6 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -69,6 +70,9 @@ public class TransporteMb implements Serializable {
    public void eliminar(){
       try{ 
        transportefacade.remove(transporte);
+         
+       RequestContext.getCurrentInstance().update("listadoDeTransportes");
+        System.err.println("borrando");
        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Transporte eliminado exitosamente!"));
       }catch (Exception e){
           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al eliminar:", e.getMessage()));
@@ -81,6 +85,8 @@ public class TransporteMb implements Serializable {
         try {
             if(this.transporte.getIdtransporte()!=null){
                 transportefacade.edit(this.transporte);
+                RequestContext.getCurrentInstance().update("listadoDeTransportes");
+                        
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Transporte modificado exitosamente!"));
             }
             else{

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Administrator
  */
 @Entity
-@Table(name = "formadepagoreserva" ,schema="test")
+@Table(name = "formadepagoreserva")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FormadePagoReserva.findAll", query = "SELECT f FROM FormadePagoReserva f"),

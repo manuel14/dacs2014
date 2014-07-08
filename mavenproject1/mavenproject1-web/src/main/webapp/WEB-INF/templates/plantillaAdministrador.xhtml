@@ -23,7 +23,7 @@
                         <div id="topRightCuenta" align="center">
                             <p:outputLabel value="Usted es el Administrador"/>
                             <br/>
-                            <p:commandButton value="Cerrar Sesión" actionListener="#{logoutMb.logout()}"/>
+                            <p:commandButton value="Cerrar Sesión" action="#{logoutMb.logout()}"/>
                         </div>
                     </h:form>
                 </div>
@@ -40,6 +40,7 @@
                                         <p:menuitem value="Eventos" outcome="/admin/eventosHome.xhtml"/>
                                         <p:menuitem value="Hoteles" outcome="/admin/hotelesHome.xhtml"/>
                                         <p:menuitem value="Transportes" outcome="/admin/transportesHome.xhtml"/>
+                                        <p:menuitem value="Enviar Publicidad" outcome="/admin/publicidad.xhtml" />
                                     </p:submenu>
                                 </p:menu>
                             </h:form>

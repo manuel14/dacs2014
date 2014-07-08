@@ -38,9 +38,23 @@ public class PaqueteMb implements Serializable{
     private Hotel hotel;
     private Paquete paquete = new Paquete();
     private List<Paquete> paquetes = null;
-  
-   
+    private String nombre;
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+   
+    public void doBuscarPaquetes() {
+       
+         paquetes.clear();
+         paquetes.addAll(paquetefacade.ListarPaquetesPorNombre(nombre));
+         
+     
+    }
     
     
     

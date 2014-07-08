@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
+import webservices.validarTarjeta;
 /**
  *
  * @author Administrator
@@ -31,6 +32,8 @@ public class ClienteMb {
         this.cliente = new Cliente();
     }
     
+    
+    
     public Cliente getCliente() {
         return this.cliente;
     }
@@ -38,6 +41,9 @@ public class ClienteMb {
     public String guardar() {
         facade.create(cliente);
         return "ok";
+    }
+    public String reservar(String nroTarjeta, Integer cantidad){
+        return ("ok");
     }
     
 }
